@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import {useSelector} from 'react-redux'
+import QuestionsList from './components/QuestionsList';
+import QuestionsPanel from './components/QuestionsPanel';
 
 function App() {
+  const questionsState = useSelector(state => state.questions)
+  console.log({questionsState});
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Learn English</h1>
+      <QuestionsList></QuestionsList>
+      <QuestionsPanel></QuestionsPanel>
     </div>
   );
 }
