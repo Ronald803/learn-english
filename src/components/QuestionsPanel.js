@@ -1,12 +1,26 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
+import "./QuestionsPanel.css"
 
 const QuestionsPanel = () => {
-    const stateQuestions = useSelector(state=>state.questions)
-    console.log({stateQuestions}, 'from Questions Panel');
+    const questions = useSelector(state=>state.questions)
+    console.log({questions}, 'from Questions Panel');
     return (
         <div>
-            Questions Panel
+            <h3>Questions Panel</h3>
+            {questions.map( (question,index) => (
+                <div 
+                    className='circle'
+                    style={
+                        {
+                            display: 'inline-block',
+                            backgroundColor: question.response==="" ? 'white' : 'greenyellow'
+                        }
+                    }
+                >
+                    {index}
+                </div>
+            ) )}
         </div>
     );
 }
