@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = [
     {
-        id: '1',
+        _id: '1',
         question: 'Complete the sentence: "I ____ a doctor"',
         answers: ['am','is','are','none'],
         response: ""
@@ -25,9 +25,15 @@ export const questionSlice = createSlice({
             if (foundQuestion){
                 foundQuestion.response = value;
             }
+        },
+        getQuestions: (state,action)=>{
+            action.payload.map( q=>{
+                console.log(q);
+            })
+            state.push(action.payload[0])
         }
     }
 })
 
-export const {addAnswer} = questionSlice.actions
+export const {addAnswer,getQuestions} = questionSlice.actions
 export default questionSlice.reducer

@@ -16,7 +16,7 @@ const QuestionsList = () => {
         <div>
             <h3>Questions List</h3>
             {questions.map( question => (
-                <div key={question.id}>
+                <div key={question._id}>
                     <h3>{question.question}</h3>
                     {question.answers.map(answer => (
                         <div key={question.id+answer}>
