@@ -4,11 +4,11 @@ import "./QuestionsPanel.css"
 
 const QuestionsPanel = () => {
     const questions = useSelector(state=>state.questions)
-    console.log({questions}, 'from Questions Panel');
+    console.log(questions.evaluation, 'from Questions Panel');
     return (
         <div>
             <h3>Questions Panel</h3>
-            {questions.map( (question,index) => (
+            {questions.evaluation.map( (question,index) => (
                 <div 
                     className='circle'
                     style={

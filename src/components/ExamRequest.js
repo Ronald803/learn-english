@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTest } from '../axiosRequests/Tests/axiosService'
 import { useDispatch } from 'react-redux';
-import { getQuestions } from '../features/questions/questionSlice';
+import { cleanEvaluation, getQuestions } from '../features/questions/questionSlice';
 
 const ExamRequest = () => {
     const dispatch = useDispatch()
@@ -9,6 +9,7 @@ const ExamRequest = () => {
         getTest()
             .then( questions => {
                 console.log(questions.data);
+                dispatch(cleanEvaluation())
                 dispatch(getQuestions(questions.data))
             } )
             .catch( e=> {

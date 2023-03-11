@@ -1,8 +1,7 @@
-import React,{useState} from 'react';
+import React from 'react';
 import {useSelector} from 'react-redux'
 import { useDispatch } from 'react-redux';
-import { checkAnswers } from '../axiosRequests/Tests/axiosService';
-import { addAnswer, addResults } from '../features/questions/questionSlice';
+import { addAnswer } from '../features/questions/questionSlice';
 
 
 const QuestionsList = () => {
@@ -12,12 +11,12 @@ const QuestionsList = () => {
         dispatch(addAnswer({value,id}))
     }
     const questions = useSelector(state => state.questions)
-    console.log({questions}, 'from questions List');
+    console.log(questions.evaluation, 'from questions List');
 
     return (
         <div>
             <h3>Questions List</h3>
-            {questions.map( question => (
+            {questions.evaluation.map( question => (
                 <div key={question._id}>
                     <h3>{question.question}</h3>
                     {question.answers.map(answer => (
