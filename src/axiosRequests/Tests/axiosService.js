@@ -14,3 +14,8 @@ export function checkAnswers(questions){
     //return axios.put('https://learn-english-backend-bay.vercel.app/api/test',{test})
     return axios.put('http://localhost:4000/api/test',{test})
 }
+
+export function createNewUser(user){
+    console.log(user);
+    return axios.post('http://localhost:4000/api/users',user)
+}

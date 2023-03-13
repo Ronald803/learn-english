@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     evaluation: [],
+    token:'',
     statusTest: false
 }
 export const questionSlice = createSlice({
@@ -39,9 +40,12 @@ export const questionSlice = createSlice({
         },
         finishedTest: (state,action)=>{
             state.statusTest = true;
+        },
+        saveToken: (state,action)=>{
+            state.token = action.payload
         }
     }
 })
 
-export const {addAnswer,getQuestions,addResults,cleanEvaluation,finishedTest} = questionSlice.actions
+export const {addAnswer,getQuestions,addResults,cleanEvaluation,finishedTest,saveToken} = questionSlice.actions
 export default questionSlice.reducer
