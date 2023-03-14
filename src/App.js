@@ -4,6 +4,7 @@ import Test from './pages/Test';
 import Home from './pages/Home'
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
+import CreateTest from './pages/CreateTest';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='/tests' element={<Test></Test>}/>      
           <Route path='/login' element={<Login></Login>}/>    
           <Route path='/create-user' element={<CreateUser></CreateUser>}/>
+          <Route path='/create-test' element={<CreateTest></CreateTest>}/>
         </Routes>
       </BrowserRouter>      
     </div>

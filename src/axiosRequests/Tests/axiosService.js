@@ -16,6 +16,9 @@ export function checkAnswers(questions){
 }
 
 export function createNewUser(user){
-    console.log(user);
     return axios.post('http://localhost:4000/api/users',user)
+}
+
+export function login(user){
+    return axios.post('http://localhost:4000/api/auth',user)
 }

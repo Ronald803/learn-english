@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { createNewUser } from '../axiosRequests/Tests/axiosService';
 import { useDispatch } from 'react-redux'; 
-import { saveToken } from '../features/questions/questionSlice';
+import { saveUser } from '../features/questions/questionSlice';
 
 const CreateUserForm = () => {
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const CreateUserForm = () => {
         //console.log({newUser});
         const answer = await createNewUser(newUser)
         console.log(answer);
-        dispatch(saveToken(answer.data.body.password))
+        dispatch(saveUser(answer.data.body))
     }
     const handleChange = (e) => {
         setNewUser({
