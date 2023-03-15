@@ -1,45 +1,54 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { saveQuestion } from '../features/questions/questionSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveTest } from '../axiosRequests/Tests/axiosService';
+import { saveQuestion, updateQuestion } from '../features/questions/questionSlice';
 
 
 const CreateTestForm = () => {
     const dispatch = useDispatch()
-    let newQuestion = {
-        question: '',
-        answers: [],
-        response: '',
-        test: ''
-    }
+    const questions = useSelector(state=>state.questions.newQuestions)
+    console.log({questions});
     const handleSubmit = (e) => {
-        e.preventDefault()
         console.log("se realizó un Submit");
-        console.log({newQuestion});
-        dispatch(saveQuestion(newQuestion));
+        saveTest(questions)
     }
-    const handleChange = (e) => {
-        newQuestion[e.target.name] = e.target.value
+    const handleAllChanges = (value,i,j,k) => {
+        console.log({value},{i},{j},{k});
+        dispatch(updateQuestion({value,i,j,k}))
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor='question'>Questions: </label>
-            <textarea
-                name='question'
-                id='question'
-                placeholder='New question'
-                onChange={handleChange}
-            >
-            </textarea>
-            <label>Answers: </label>
-                <input name='a' type='text' onChange={handleChange}/>
-                <input name='b' type='text' onChange={handleChange}/>
-                <input name='c' type='text' onChange={handleChange}/>
-                <input name='d' type='text' onChange={handleChange}/>
-                <input name='e' type='text' onChange={handleChange}/>
-            <label htmlFor='response'>Correct Answer: </label>
-            <input name='response' type='text' id='response' onChange={handleChange} />            
-            <button>Save Question</button>
-        </form>
+        <div>
+            {
+                questions.map( (q,i) => (
+                    <div key={i}>
+                        <label htmlFor='question'>Question {i+1}:</label>
+                        <textarea 
+                            id='question'
+                            name='question'
+                            onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name)}
+                        />
+                        <label>Possible Answers: </label>
+                        {q.answers.map( (a,j) => (
+                            <div key={i+j+10}>
+                                <input
+                                    name='answers'
+                                    type='text'
+                                    onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name,j)}
+                                />
+                            </div>
+                        ))}
+                        <label htmlFor='response'>Correct Answer:</label>
+                        <input 
+                            id='response' 
+                            name='response' 
+                            type='text' 
+                            onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name)}
+                        />
+                    </div>
+                ))
+            }
+            <button onClick={handleSubmit}>Save Question</button>
+        </div>
     );
 }
 

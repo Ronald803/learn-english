@@ -51,6 +51,19 @@ export const questionSlice = createSlice({
             state.user.name     = action.payload.name;
             state.user.rol      = action.payload.rol
         },
+        setNewTest: (state,action)=>{
+            console.log(action.payload);
+            const {qu,t} =action.payload
+            for(let i=0; i<qu; i++){
+                state.newQuestions.push({
+                    question: '',
+                    answers: ['','','','',''],
+                    response: '',
+                    i,
+                    test: t
+                })
+            }
+        },
         saveQuestion: (state,action)=>{
             const p = action.payload
             const q = {
@@ -60,6 +73,16 @@ export const questionSlice = createSlice({
                 answers:    [p.a,p.b,p.c,p.d,p.e]
             }
             state.newQuestions.push(q)
+        },
+        updateQuestion: (state,action)=>{
+            console.log(action.payload);
+            const {value,i,j,k} = action.payload
+            if(k===undefined){
+                state.newQuestions[i][j] = value
+            } else {
+                console.log(value,i,j,k);
+                state.newQuestions[i][j][k] = value
+            }
         }
     }
 })
@@ -70,6 +93,8 @@ export const {      addAnswer,
                     cleanEvaluation,
                     finishedTest,
                     saveUser,
-                    saveQuestion
+                    saveQuestion,
+                    setNewTest,
+                    updateQuestion
                 } = questionSlice.actions
 export default questionSlice.reducer

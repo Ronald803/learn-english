@@ -22,3 +22,10 @@ export function createNewUser(user){
 export function login(user){
     return axios.post('http://localhost:4000/api/auth',user)
 }
+
+export function saveTest(test){
+    console.log(test);
+    test.map(q=>{
+        axios.post('http://localhost:4000/api/test',q)
+    })
+}
