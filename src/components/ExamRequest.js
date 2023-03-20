@@ -1,10 +1,11 @@
 import React from 'react';
 import { getTest } from '../axiosRequests/Tests/axiosService'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { cleanEvaluation, getQuestions } from '../features/questions/questionSlice';
 
 const ExamRequest = () => {
     const dispatch = useDispatch()
+    
     const getExam = async ()=>{
         getTest()
             .then( questions => {
@@ -18,7 +19,7 @@ const ExamRequest = () => {
     }
     return (
         <div>
-            <button onClick={getExam}>Solicitar exámen</button>
+            <button onClick={getExam} className='btn btn-dark'>Solicitar exámen</button>
         </div>
     );
 }

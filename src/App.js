@@ -5,10 +5,12 @@ import Home from './pages/Home'
 import Login from './pages/Login';
 import CreateUser from './pages/CreateUser';
 import CreateTest from './pages/CreateTest';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div >
+      <Navbar></Navbar>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home></Home>}/>

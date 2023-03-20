@@ -24,7 +24,6 @@ const Test = () => {
     }
     return (
         <div>
-            test page
             <ExamRequest></ExamRequest>
             { 
                 questions.statusTest 
@@ -36,7 +35,7 @@ const Test = () => {
                 <div>
                     <QuestionsPanel></QuestionsPanel>
                     <QuestionsList></QuestionsList>
-                    <button onClick={getAnswers}>Calificar desde la página test</button>
+                    <button onClick={getAnswers} className='btn btn-dark'>Calificar desde la página test</button>
                 </div>
             }
             

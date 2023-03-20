@@ -20,7 +20,6 @@ const CreateTest = () => {
     }
     return (
         <div>
-            Crear test
             {
                 testSet ? 
                 <CreateTestForm></CreateTestForm>
