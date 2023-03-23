@@ -18,7 +18,7 @@ const ExamRequest = () => {
             })
     }
     return (
-        <div>
+        <div className='text-center'>
             <button onClick={getExam} className='btn btn-dark'>Solicitar exámen</button>
         </div>
     );

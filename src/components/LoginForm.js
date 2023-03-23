@@ -17,7 +17,9 @@ const LoginForm = () => {
         sessionStorage.setItem('t',answer.data.body.token)
         sessionStorage.setItem('n',answer.data.body.name)
         sessionStorage.setItem('r',answer.data.body.rol)
+        alert('Bienvenida '+answer.data.body.name)
         dispatch(saveUser(answer.data.body))
+        window.location.href='/'
     }
     const handleChange = (e) => {
         user[e.target.name] = e.target.value

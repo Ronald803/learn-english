@@ -35,7 +35,9 @@ const Test = () => {
                 <div>
                     <QuestionsPanel></QuestionsPanel>
                     <QuestionsList></QuestionsList>
-                    <button onClick={getAnswers} className='btn btn-dark'>Calificar desde la página test</button>
+                    <div className='text-center'>
+                        <button onClick={getAnswers} className='btn btn-dark'>Calificar desde la página test</button>
+                    </div>
                 </div>
             }
             

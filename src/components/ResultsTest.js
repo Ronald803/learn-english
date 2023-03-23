@@ -5,28 +5,36 @@ const ResultsTest = () => {
     const questions = useSelector(state => state.questions)
     console.log(questions.evaluation);
     return (
-        <div>
+        <div style={{"width": "28rem"}}>
              <h3>Questions List</h3>
             {questions.evaluation.map( question => (
-                <div key={question._id}>
-                    <h2>{question.result}</h2>
-                    <h3>{question.question}</h3>
-                    {question.answers.map(answer => (
-                        <div 
-                            key={question._id+answer}
-                            style={
-                                {
-                                    backgroundColor: answer===question.correctAnswer 
-                                    ? 
-                                    'green' 
-                                    : 
-                                    answer===question.response ? 'pink' : 'none'
-                                }
-                                }
-                        >
-                            {answer}
+                <div className='card' key={question._id}>
+                    <h5 className='card-header text-center'>{question.result}</h5>
+                    <div className='card-body'>
+                        <p>{question.question}</p>
+                        <div className='card'>
+                            <ul className='list-group list-group-flush'>
+                                {question.answers.map(answer => (
+                                    <li 
+                                        className='list-group-item'
+                                        key={question._id+answer}
+                                        style={
+                                            {
+                                                backgroundColor: answer===question.correctAnswer 
+                                                ? 
+                                                'green' 
+                                                : 
+                                                answer===question.response ? 'pink' : 'none'
+                                            }
+                                            }
+                                    >
+                                        {answer}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                    ))}
+                    </div>
+                    
                 </div>
             ))}                        
         </div>

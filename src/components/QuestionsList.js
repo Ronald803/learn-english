@@ -17,7 +17,7 @@ const QuestionsList = () => {
         <div className='question-list'>
             <h3>Questions List</h3>
             {questions.evaluation.map( (question,index) => (
-                <div key={question._id} className='card'>
+                <div key={question._id} className='card mb-2'>
                     
                         <h5 className='card-header'>{index+1}. {question.question}</h5>
                         {question.answers.map(answer => (

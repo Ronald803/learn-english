@@ -25,12 +25,18 @@ const CreateTest = () => {
                 <CreateTestForm></CreateTestForm>
                 :
                 <form onSubmit={handleSubmit}>
-                <label htmlFor='t'>Test Number:</label>
-                <input type='number' id='t' name='t' onChange={handleChange}/>
-                <label htmlFor='qu'>Number of Questions</label>
-                <input type='number' id='qu' name='qu' onChange={handleChange}/>
-                <button>Crear Nuevo Test</button>
-            </form>
+                    <div className='mb-3'>
+                        <label className='form-label' htmlFor='t'>Test Number:</label>
+                        <input className='form-control' type='number' id='t' name='t' onChange={handleChange}/>
+                    </div>
+                    
+                    <div className='mb-3'>
+                        <label className='form-label' htmlFor='qu'>Number of Questions</label>
+                        <input className='form-control' type='number' id='qu' name='qu' onChange={handleChange}/>
+                    </div>
+                                        
+                    <button className='btn btn-dark'>Crear Nuevo Test</button>
+                </form>
             }
         </div>
     );

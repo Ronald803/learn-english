@@ -3,6 +3,11 @@ import CreateUserForm from './CreateUserForm';
 import LoginForm from './LoginForm';
 
 const NavBar = () => {
+    const logOut = ()=>{
+        sessionStorage.setItem('t',"")
+        sessionStorage.setItem('n',"")
+        sessionStorage.setItem('r',"")
+    }
     return (
         <nav className="navbar navbar-dark bg-dark">
             <div className="container-fluid">
@@ -22,18 +27,27 @@ const NavBar = () => {
                             <li className="nav-item">
                                 <a className="nav-link" href="/tests">Tests</a>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Login
-                                </a>
-                                <ul className="dropdown-menu dropdown-menu-dark">
-                                    <li>
-                                        <div className='dropdown-item'>
-                                        <LoginForm></LoginForm>
-                                        </div>
-                                    </li> 
-                                </ul>
-                            </li>
+                            {
+                                sessionStorage.getItem('n') 
+                                ?
+                                <li className='nav-item'>
+                                    <a className='nav-link' onClick={logOut} href='/'>{sessionStorage.getItem('n')} (Cerrar Sesión)</a>
+                                </li>
+                                :
+                                <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Login
+                                    </a>
+                                    <ul className="dropdown-menu dropdown-menu-dark">
+                                        <li>
+                                            <div className='dropdown-item'>
+                                            <LoginForm></LoginForm>
+                                            </div>
+                                        </li> 
+                                    </ul>
+                                </li>
+                            }
+                            
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Sign In
@@ -46,11 +60,20 @@ const NavBar = () => {
                                     </li> 
                                 </ul>
                             </li>
+                            <hr/>
+                            {
+                                sessionStorage.getItem('r')
+                                &&
+                                <li className="nav-item">
+                                    <a className="nav-link" aria-current="page" href="/create-test">Create Test</a>
+                                </li>
+                            }
                         </ul>
                         {/* <form class="d-flex mt-3" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
                                 <button class="btn btn-success" type="submit">Search</button>
                         </form> */}
+                        
                     </div>
                 </div>
             </div>

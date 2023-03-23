@@ -13,11 +13,11 @@ export function getTest(){
 
 export function checkAnswers(questions){
     let test = questions
-    return axios.put('http://localhost:4000/api/test',{test},{headers:{'x-token': t}})
+    return axios.put(`${url}/api/test`,{test},{headers:{'x-token': t}})
 }
 
 export function createNewUser(user){
-    return axios.post('http://localhost:4000/api/users',user)
+    return axios.post(`${url}/api/users`,user)
 }
 
 export function login(user){
@@ -28,6 +28,6 @@ export function login(user){
 export function saveTest(test){
     console.log(test);
     test.map(q=>{
-        axios.post('http://localhost:4000/api/test',q)
+        axios.post(`${url}/api/test`,q)
     })
 }

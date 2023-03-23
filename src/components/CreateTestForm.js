@@ -20,34 +20,39 @@ const CreateTestForm = () => {
         <div>
             {
                 questions.map( (q,i) => (
-                    <div key={i}>
-                        <label htmlFor='question'>Question {i+1}:</label>
-                        <textarea 
-                            id='question'
-                            name='question'
-                            onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name)}
-                        />
-                        <label>Possible Answers: </label>
-                        {q.answers.map( (a,j) => (
-                            <div key={i+j+10}>
-                                <input
-                                    name='answers'
-                                    type='text'
-                                    onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name,j)}
-                                />
-                            </div>
-                        ))}
-                        <label htmlFor='response'>Correct Answer:</label>
-                        <input 
-                            id='response' 
-                            name='response' 
-                            type='text' 
-                            onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name)}
-                        />
+                    <div className='card' key={i}>
+                        <div className='card-body'>
+                            <label className='form-label' htmlFor='question'>Question {i+1}:</label>
+                            <textarea 
+                                id='question'
+                                name='question'
+                                className='form-control'
+                                onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name)}
+                            />
+                            <label>Possible Answers: </label>
+                            {q.answers.map( (a,j) => (
+                                <div key={i+j+10}>
+                                    <input
+                                        name='answers'
+                                        type='text'
+                                        className='form-control form-control-sm'
+                                        onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name,j)}
+                                    />
+                                </div>
+                            ))}
+                            <label className='form-label' htmlFor='response'>Correct Answer:</label>
+                            <input 
+                                id='response' 
+                                name='response' 
+                                type='text'
+                                className='form-control' 
+                                onChange={(e)=>handleAllChanges(e.target.value,i,e.target.name)}
+                            />
+                        </div>                            
                     </div>
                 ))
             }
-            <button onClick={handleSubmit}>Save Question</button>
+            <button className='btn btn-dark' onClick={handleSubmit}>Save Question</button>
         </div>
     );
 }
