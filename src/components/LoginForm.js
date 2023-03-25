@@ -12,14 +12,29 @@ const LoginForm = () => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         console.log({user});
-        const answer = await login(user)
-        console.log(answer.data.body);
-        sessionStorage.setItem('t',answer.data.body.token)
-        sessionStorage.setItem('n',answer.data.body.name)
-        sessionStorage.setItem('r',answer.data.body.rol)
-        alert('Bienvenida '+answer.data.body.name)
-        dispatch(saveUser(answer.data.body))
-        window.location.href='/'
+        await login(user)
+            .then( answer=>{
+                console.log(answer.data.body);
+                sessionStorage.setItem('t',answer.data.body.token)
+                sessionStorage.setItem('n',answer.data.body.name)
+                sessionStorage.setItem('r',answer.data.body.rol)
+                alert('Bienvenida '+answer.data.body.name)
+                dispatch(saveUser(answer.data.body))
+                window.location.href='/'
+            })
+            .catch( error=>{
+                console.log({error});
+                alert('Lo sentimos algo salió mal')
+            })
+        
+        // const answer = await login(user)
+        // console.log(answer.data.body);
+        // sessionStorage.setItem('t',answer.data.body.token)
+        // sessionStorage.setItem('n',answer.data.body.name)
+        // sessionStorage.setItem('r',answer.data.body.rol)
+        // alert('Bienvenida '+answer.data.body.name)
+        // dispatch(saveUser(answer.data.body))
+        // window.location.href='/'
     }
     const handleChange = (e) => {
         user[e.target.name] = e.target.value

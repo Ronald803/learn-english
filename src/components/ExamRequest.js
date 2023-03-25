@@ -7,6 +7,10 @@ const ExamRequest = () => {
     const dispatch = useDispatch()
     
     const getExam = async ()=>{
+        let n = sessionStorage.getItem('n')
+        if(!n){
+            return alert("Debes iniciar sesión para solicitar examenes")
+        }
         getTest()
             .then( questions => {
                 console.log(questions.data);
@@ -25,3 +29,11 @@ const ExamRequest = () => {
 }
 
 export default ExamRequest;
+//79106826
+//etn 606 conversiones electromagneticas teoria y laboratorio
+
+//etn-640 proyecto II 
+
+//etn-832 electronica industrial teoria y laboratorio
+
+//martes a las 9am
