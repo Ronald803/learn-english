@@ -6,9 +6,9 @@ const Lateral = () => {
           <div className='card-body'>
             <div className='card'>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item">Lessons</li>
+                  <li class="list-group-item">Tests</li>
+                  <li class="list-group-item">Vocabulary</li>
                 </ul>
             </div>            
           </div>          

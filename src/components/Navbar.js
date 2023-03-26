@@ -62,7 +62,7 @@ const NavBar = () => {
                             </li>
                             <hr/>
                             {
-                                sessionStorage.getItem('r')
+                                sessionStorage.getItem('r')==="teacher"
                                 &&
                                 <li className="nav-item">
                                     <a className="nav-link" aria-current="page" href="/create-test">Create Test</a>

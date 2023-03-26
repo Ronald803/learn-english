@@ -16,9 +16,24 @@ const CreateUserForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         //console.log({newUser});
-        const answer = await createNewUser(newUser)
-        console.log(answer);
-        dispatch(saveUser(answer.data.body))
+        await createNewUser(newUser)
+            .then( answer =>{
+                console.log(answer.data);
+                sessionStorage.setItem('t',answer.data.body.token)
+                sessionStorage.setItem('n',answer.data.body.name)
+                sessionStorage.setItem('r',answer.data.body.rol)
+                alert(answer.data.message)
+                window.location.href='/'
+            })
+            .catch( error => {
+                console.log(error.data);
+                alert(error.data.body.message)
+            })
+
+        // const answer = await createNewUser(newUser)
+        // console.log(answer);
+        // dispatch(saveUser(answer.data.body))
+
     }
     const handleChange = (e) => {
         setNewUser({

@@ -1,8 +1,10 @@
 import React from 'react';
+import Carousel from '../components/Carousel';
 
 const Home = () => {
     return (
         <div>
+            <Carousel></Carousel>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
