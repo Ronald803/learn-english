@@ -12,6 +12,9 @@ const LoginForm = () => {
     const handleSubmit = async (e)=>{
         e.preventDefault();
         console.log({user});
+        if(user.email==="" || user.password===""){
+            return alert("El email y el password son necesarios para Iniciar sesión")
+        }
         await login(user)
             .then( answer=>{
                 console.log(answer.data.body);

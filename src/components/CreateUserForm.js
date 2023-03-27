@@ -15,7 +15,12 @@ const CreateUserForm = () => {
     });
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //console.log({newUser});
+        for(const property in newUser){
+            if(newUser[property]===""){
+                return alert("Todos los datos son necesarios para crear un nuevo usuario")
+            }
+        }
+        console.log("uuuuu la la la ");
         await createNewUser(newUser)
             .then( answer =>{
                 console.log(answer.data);
@@ -106,6 +111,7 @@ const CreateUserForm = () => {
                             onChange={handleChange}
                             className='col form-select'
                         >
+                            <option value="">Elige una opción</option>
                             <option value='Básico'>Básico</option>
                             <option value='Auxiliar'>Auxiliar</option>
                             <option value='Medio I'>Medio I</option>
@@ -120,6 +126,7 @@ const CreateUserForm = () => {
                                 onChange={handleChange}
                                 className='form-select'
                             >
+                                <option value="">Elige una opción</option>
                                 <option value='Mañana'>Mañana</option>
                                 <option value='Tarde'>Tarde</option>
                                 <option value='Noche'>Noche</option>
