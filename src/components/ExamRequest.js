@@ -1,29 +1,71 @@
-import React from 'react';
-import { getTest } from '../axiosRequests/Tests/axiosService'
+import React,{useState} from 'react';
+import { getQuestionsBackend,getTestsBackend } from '../axiosRequests/Tests/axiosService'
 import { useDispatch, useSelector } from 'react-redux';
 import { cleanEvaluation, getQuestions } from '../features/questions/questionSlice';
 
 const ExamRequest = () => {
     const dispatch = useDispatch()
-    
+    const [tests, setTests] = useState([]);
     const getExam = async ()=>{
-        let n = sessionStorage.getItem('n')
-        if(!n){
-            return alert("Debes iniciar sesión para solicitar examenes")
-        }
-        getTest()
-            .then( questions => {
-                console.log(questions.data);
-                dispatch(cleanEvaluation())
-                dispatch(getQuestions(questions.data))
-            } )
-            .catch( e=> {
-                alert(`Something went wrong: ${e}`)
+        getTestsBackend()
+            .then( tests => {
+                console.log(tests.data.body);
+                setTests(tests.data.body)
             })
+            .catch( e => {
+                console.log({e});
+            } )
+        // let n = sessionStorage.getItem('n')
+        // if(!n){
+        //     return alert("Debes iniciar sesión para solicitar examenes")
+        // }
+        // getQuestionsBackend()
+        //     .then( questions => {
+        //         console.log(questions.data);
+        //         dispatch(cleanEvaluation())
+        //         dispatch(getQuestions(questions.data))
+        //     } )
+        //     .catch( e=> {
+        //         alert(`Something went wrong: ${e}`)
+        //     })
     }
     return (
         <div className='text-center'>
-            <button onClick={getExam} className='btn btn-dark'>Solicitar exámen</button>
+            <button onClick={getExam} className='btn btn-dark'>Solicitar exámenes</button>
+            <div>
+                <table className='table table-dark table-bordered'>
+                    <thead>
+                        <tr>
+                            <th scope='col'>Number</th>
+                            <th scope='col'>Name</th>
+                            <th scope='col'>Level</th>
+                            <th scope='col'>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            tests.map( (test,index)=>{
+                                return(
+                                <tr>
+                                    <th>
+                                        <span>{test.number}</span>
+                                    </th>
+                                    <td>
+                                        <span>{test.name}</span>
+                                    </td>
+                                    <td>
+                                        <span>{test.level}</span>
+                                    </td>
+                                    <td>
+                                        <span>{test.description}</span>
+                                    </td>
+                                </tr>
+                                )
+                            } )
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveTest } from '../axiosRequests/Tests/axiosService';
+import { saveQuestionsBackend } from '../axiosRequests/Tests/axiosService';
 import { saveQuestion, updateQuestion } from '../features/questions/questionSlice';
 
 
@@ -8,9 +8,17 @@ const CreateTestForm = () => {
     const dispatch = useDispatch()
     const questions = useSelector(state=>state.questions.newQuestions)
     console.log({questions});
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         console.log("se realizó un Submit");
-        saveTest(questions)
+        await saveQuestionsBackend(questions)
+            .then( answer => {
+                answer.map( q=>{
+                    console.log(q.data);
+                })
+            })
+            .catch( e => {
+                console.log(e);
+            })
     }
     const handleAllChanges = (value,i,j,k) => {
         console.log({value},{i},{j},{k});

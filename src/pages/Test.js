@@ -5,6 +5,7 @@ import ExamRequest from '../components/ExamRequest';
 import QuestionsList from '../components/QuestionsList';
 import QuestionsPanel from '../components/QuestionsPanel';
 import ResultsTest from '../components/ResultsTest';
+import TestsTable from '../components/TestsTable';
 import { addResults,finishedTest } from '../features/questions/questionSlice';
 
 const Test = () => {
@@ -24,6 +25,7 @@ const Test = () => {
     }
     return (
         <div>
+            {/* <TestsTable></TestsTable> */}
             <ExamRequest></ExamRequest>
             { 
                 questions.statusTest 

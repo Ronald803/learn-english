@@ -13,6 +13,7 @@ const CreateUserForm = () => {
         schedule:"",
         password:""
     });
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         for(const property in newUser){

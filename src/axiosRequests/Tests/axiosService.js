@@ -5,15 +5,15 @@ const t = sessionStorage.getItem('t')
 const url = 'https://learn-english-backend-bay.vercel.app';
 //const url = 'http://localhost:4000';
 //const url = 'https://learn-english-backend-1ymtsw2jj-ronald803.vercel.app/'
-export function getTest(){
+export function getQuestionsBackend(){
     //return axios.get('http://localhost:4000/api/test',{headers:{'x-token': t}})
     //console.log({t});
-    return axios.get(`${url}/api/test`,{headers:{'x-token': t}})
+    return axios.get(`${url}/api/question`,{headers:{'x-token': t}})
 }
 
 export function checkAnswers(questions){
     let test = questions
-    return axios.put(`${url}/api/test`,{test},{headers:{'x-token': t}})
+    return axios.put(`${url}/api/question`,{test},{headers:{'x-token': t}})
 }
 
 export function createNewUser(user){
@@ -25,9 +25,16 @@ export function login(user){
     return axios.post(`${url}/api/auth`,user)
 }
 
-export function saveTest(test){
-    console.log(test);
-    test.map(q=>{
-        axios.post(`${url}/api/test`,q)
-    })
+export async function saveQuestionsBackend(newQuestions){
+    console.log(newQuestions);
+    let questionsAddedToBackend = await Promise.all(
+        newQuestions.map(q=>{
+            return axios.post(`${url}/api/question`,q,{headers:{'x-token': t}})
+        })
+    )
+    return questionsAddedToBackend
+}
+
+export function getTestsBackend(){
+    return axios.get(`${url}/api/test`)
 }
