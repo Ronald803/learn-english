@@ -29,6 +29,23 @@ const ExamRequest = () => {
         //         alert(`Something went wrong: ${e}`)
         //     })
     }
+    const getQues = (number)=>{
+        console.log({number});
+        let n = sessionStorage.getItem('n')
+        if(!n){
+            return alert("Debes iniciar sesión para solicitar examenes")
+        }
+        getQuestionsBackend(number)
+            .then( questions => {
+                console.log(questions.data);
+                dispatch(cleanEvaluation())
+                dispatch(getQuestions(questions.data))
+            } )
+            .catch( e=> {
+                console.log("error");
+                alert(`Something went wrong: ${e}`)
+            })
+    }
     return (
         <div className='text-center'>
             <button onClick={getExam} className='btn btn-dark'>Solicitar exámenes</button>
@@ -39,7 +56,7 @@ const ExamRequest = () => {
                             <th scope='col'>Number</th>
                             <th scope='col'>Name</th>
                             <th scope='col'>Level</th>
-                            <th scope='col'>Description</th>
+                            <th scope='col'></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +74,7 @@ const ExamRequest = () => {
                                         <span>{test.level}</span>
                                     </td>
                                     <td>
-                                        <span>{test.description}</span>
+                                        <button onClick={()=>getQues(test.number)} className='btn btn-primary' >Start Test</button>
                                     </td>
                                 </tr>
                                 )

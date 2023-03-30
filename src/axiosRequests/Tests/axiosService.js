@@ -5,10 +5,11 @@ const t = sessionStorage.getItem('t')
 const url = 'https://learn-english-backend-bay.vercel.app';
 //const url = 'http://localhost:4000';
 //const url = 'https://learn-english-backend-1ymtsw2jj-ronald803.vercel.app/'
-export function getQuestionsBackend(){
-    //return axios.get('http://localhost:4000/api/test',{headers:{'x-token': t}})
+export function getQuestionsBackend(test){
+    console.log({test});
+    return axios.get(`http://localhost:4000/api/question?test=${test}`,{headers:{'x-token': t}})
     //console.log({t});
-    return axios.get(`${url}/api/question`,{headers:{'x-token': t}})
+    //return axios.get(`${url}/api/question`,{"test":number},{headers:{'x-token': t}})
 }
 
 export function checkAnswers(questions){
