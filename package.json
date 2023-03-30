@@ -1,6 +1,7 @@
 {
   "name": "learn-english",
   "version": "0.1.0",
+  "homepage": "https://friendly-mermaid-2a1039.netlify.app/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
