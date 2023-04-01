@@ -10,7 +10,7 @@ const NavBar = () => {
     }
     return (
         <nav className="navbar navbar-dark bg-dark">
-            <div className="container-fluid">
+            <div className="container-fluid" style={{"maxWidth": "1200px"}}>
                 <a className="navbar-brand" href="/">Learn English with CEA</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
                     <span className="navbar-toggler-icon"></span>

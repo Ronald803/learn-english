@@ -7,9 +7,10 @@ const url = 'https://learn-english-backend-bay.vercel.app';
 //const url = 'https://learn-english-backend-1ymtsw2jj-ronald803.vercel.app/'
 export function getQuestionsBackend(test){
     console.log({test});
-    return axios.get(`http://localhost:4000/api/question?test=${test}`,{headers:{'x-token': t}})
+    //return axios.get(`http://localhost:4000/api/question?test=${test}`,{headers:{'x-token': t}})
     //console.log({t});
-    //return axios.get(`${url}/api/question`,{"test":number},{headers:{'x-token': t}})
+    console.log(`${url}/api/question?test=${test}`);
+    return axios.get(`${url}/api/question?test=${test}`,{headers:{'x-token': t}})
 }
 
 export function checkAnswers(questions){

@@ -13,11 +13,14 @@ function App() {
   return (
     <div >
       <Navbar></Navbar>
-      <div className='row text-center' style={{"maxWidth":"900px"}}>
-        <div className='col-md-3'>
+      <div 
+        className='d-flex justify-content-center align-items-center' 
+        style={{"marginLeft":"auto","marginRight":"auto","maxWidth":"1200px"}}  
+      >
+        {/* <div className='col-md-3'>
           <Lateral></Lateral>  
-        </div>
-        <div className='col-md-9'>
+        </div> */}
+        <div >
 
           <BrowserRouter>
             <Routes>

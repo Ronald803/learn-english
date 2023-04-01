@@ -15,11 +15,11 @@ const QuestionsList = () => {
 
     return (
         <div className='question-list'>
-            <h3>Questions List</h3>
+            {/* <h3>Questions List</h3> */}
             {questions.evaluation.map( (question,index) => (
                 <div key={question._id} className='card mb-2'>
                     
-                        <h5 className='card-header'>{index+1}. {question.question}</h5>
+                        <h6 className='card-header'>{index+1}. {question.question}</h6>
                         {question.answers.map(answer => (
                             <div key={question._id+answer} id='answer' className='form-check'>
                                 <input 

@@ -6,14 +6,13 @@ const QuestionsPanel = () => {
     const questions = useSelector(state=>state.questions)
     console.log(questions.evaluation, 'from Questions Panel');
     return (
-        <div className='center'>
-            <h3>Questions Panel</h3>
+        <div className='text-center position-fixed'>
+            {/* <h3>Panel</h3> */}
             {questions.evaluation.map( (question,index) => (
                 <div 
-                    className='circle center'
+                    className='circle text-center mb-1'
                     style={
                         {
-                            display: 'inline-block',
                             backgroundColor: question.response==="" ? 'white' : 'darkslateblue',
                             color: question.response==="" ? 'black' : 'white'
                         }

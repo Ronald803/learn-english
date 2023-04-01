@@ -59,28 +59,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Present Continuos
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                            La estructura del presente continuo (present continuous) en inglés es la siguiente:<br/>
-                        Sujeto + verbo "to be" conjugado en presente + verbo principal con terminación "ing" + complemento<br/>
-                        Por ejemplo, para decir "Yo estoy hablando por teléfono" en presente continuo, la estructura sería:<br/>
-                        I (sujeto) + am (verbo "to be" conjugado en presente) + talking (verbo principal con terminación "ing") + on the phone (complemento)<br/>
-                        Así, la oración completa quedaría:<br/>
-                        I am talking on the phone.<br/>
-                        Aquí te dejo algunos ejemplos más:<br/>
-                        Ella está estudiando para su examen: She is studying for her exam.<br/>
-                        Nosotros estamos viendo una película: We are watching a movie.<br/>
-                        Ellos están preparando la cena: They are preparing dinner.<br/>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     );

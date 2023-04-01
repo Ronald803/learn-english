@@ -16,7 +16,10 @@ const Test = () => {
         checkAnswers(questions.evaluation)
             .then( answers => {
                 //console.log(answers.data);
-                dispatch(addResults(answers.data))
+                dispatch(addResults(answers.data.califications))
+                //console.log(answers.data.score.points)
+                //console.log(questions.evaluation[0].test,"este es el numero de test");
+                alert(`${answers.data.score.points[answers.data.score.points.length-1].points} respuestas correctas de ${answers.data.score.points[answers.data.score.points.length-1].questions} preguntas`)
             })
             .catch( e=>{
                 console.log(e);
@@ -24,24 +27,42 @@ const Test = () => {
         dispatch(finishedTest());
     }
     return (
-        <div>
-            {/* <TestsTable></TestsTable> */}
-            <ExamRequest></ExamRequest>
-            { 
-                questions.statusTest 
-                ?
-                <div>
-                    <ResultsTest></ResultsTest>
-                </div>
+        <div style={{"marginTop":"10px","width":"100%"}}>
+            {
+                questions.evaluation.length===0 
+                ? 
+                <ExamRequest></ExamRequest>
                 :
-                <div>
-                    <QuestionsPanel></QuestionsPanel>
-                    <QuestionsList></QuestionsList>
-                    <div className='text-center'>
-                        <button onClick={getAnswers} className='btn btn-dark'>Calificar desde la página test</button>
-                    </div>
+                <div className='card'>
+                <div className='card-body'>
+                    { 
+                        questions.statusTest 
+                        ?
+                        <div>
+                            <ResultsTest></ResultsTest>
+                        </div>
+                        :
+                        <div>
+                            <div className='row'>
+                                <div className='col-2'>
+                                    <QuestionsPanel></QuestionsPanel>
+                                </div>
+                                <div className='col-10'>
+                                    <QuestionsList></QuestionsList>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div className='text-center'>
+                                <button onClick={getAnswers} className='btn btn-dark'>Registrar respuestas</button>
+                            </div>
+                        </div>
+                    }
                 </div>
+                
+
+                </div>                
             }
+            {/* <TestsTable></TestsTable> */}
             
         </div>
     );

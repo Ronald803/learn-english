@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { getQuestionsBackend,getTestsBackend } from '../axiosRequests/Tests/axiosService'
 import { useDispatch, useSelector } from 'react-redux';
 import { cleanEvaluation, getQuestions } from '../features/questions/questionSlice';
@@ -6,10 +6,17 @@ import { cleanEvaluation, getQuestions } from '../features/questions/questionSli
 const ExamRequest = () => {
     const dispatch = useDispatch()
     const [tests, setTests] = useState([]);
+    const [req, setReq] = useState(false);
+    useEffect(() => {
+     
+        return () => {
+            getExam();    
+        };
+    }, []);
     const getExam = async ()=>{
         getTestsBackend()
             .then( tests => {
-                console.log(tests.data.body);
+                console.log(tests);
                 setTests(tests.data.body)
             })
             .catch( e => {
@@ -37,18 +44,19 @@ const ExamRequest = () => {
         }
         getQuestionsBackend(number)
             .then( questions => {
-                console.log(questions.data);
+                console.log(questions.data.foundedQuestions);
                 dispatch(cleanEvaluation())
-                dispatch(getQuestions(questions.data))
+                dispatch(getQuestions(questions.data.foundedQuestions))
             } )
+
             .catch( e=> {
-                console.log("error");
-                alert(`Something went wrong: ${e}`)
+                //console.log("error");
+                alert(`Este examen no está habilitado para ti, comunícate con tu docente`)
             })
     }
     return (
         <div className='text-center'>
-            <button onClick={getExam} className='btn btn-dark'>Solicitar exámenes</button>
+            {/* <button onClick={getExam} className='btn btn-dark'>Solicitar exámenes</button> */}
             <div>
                 <table className='table table-dark table-bordered'>
                     <thead>
