@@ -51,12 +51,12 @@ const ExamRequest = () => {
 
             .catch( e=> {
                 //console.log("error");
-                alert(`Este examen no está habilitado para ti, comunícate con tu docente`)
+                alert(`Ya diste este examen / este examen no está habilitado para ti, comunícate con tu docente`)
             })
     }
     return (
         <div className='text-center'>
-            {/* <button onClick={getExam} className='btn btn-dark'>Solicitar exámenes</button> */}
+            <button onClick={getExam} className='btn btn-primary' style={{"marginBottom":"10px"}}>Solicitar exámenes</button>
             <div>
                 <table className='table table-dark table-bordered'>
                     <thead>

@@ -8,7 +8,17 @@ const ResultsTest = () => {
         <div style={{"width": "28rem"}}>
              <h3>Questions List</h3>
             {questions.evaluation.map( question => (
-                <div className='card' key={question._id}>
+                <div className='card' key={question._id} style={
+                                            {
+                                                borderColor: question.result==="Correct" 
+                                                ? 
+                                                'DarkGreen' 
+                                                : 
+                                                'red',
+                                                "marginTop": "10px",
+                                                "borderWidth": "3px"
+                                            }
+                                            }>
                     <h5 className='card-header text-center'>{question.result}</h5>
                     <div className='card-body'>
                         <p>{question.question}</p>
@@ -22,7 +32,7 @@ const ResultsTest = () => {
                                             {
                                                 backgroundColor: answer===question.correctAnswer 
                                                 ? 
-                                                'green' 
+                                                'lightGreen' 
                                                 : 
                                                 answer===question.response ? 'pink' : 'none'
                                             }
