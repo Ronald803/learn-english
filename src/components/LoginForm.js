@@ -2,6 +2,8 @@ import React from 'react';
 import { login } from '../axiosRequests/Tests/axiosService';
 import { useDispatch } from 'react-redux';
 import { saveUser } from '../features/questions/questionSlice';
+import successAlert from '../alerts/successAlert';
+import errorAlert from '../alerts/errorAlert';
 
 const LoginForm = () => {
     const dispatch = useDispatch()
@@ -17,17 +19,21 @@ const LoginForm = () => {
         }
         await login(user)
             .then( answer=>{
-                console.log(answer.data.body);
+                //console.log(answer.data.body);
                 sessionStorage.setItem('t',answer.data.body.token)
                 sessionStorage.setItem('n',answer.data.body.name)
                 sessionStorage.setItem('r',answer.data.body.rol)
-                alert('Bienvenida '+answer.data.body.name)
+                //alert('Bienvenida '+answer.data.body.name)
+                successAlert('Bienvenida '+answer.data.body.name)
                 dispatch(saveUser(answer.data.body))
-                window.location.href='/'
+                setTimeout(() => {
+                    window.location.reload()  
+                  }, 2500);
             })
             .catch( error=>{
-                console.log({error});
-                alert('Lo sentimos algo salió mal')
+                //console.log({error});
+                //alert('Lo sentimos algo salió mal')
+                errorAlert()
             })
         
         // const answer = await login(user)

@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import { createNewUser } from '../axiosRequests/Tests/axiosService';
 import { useDispatch } from 'react-redux'; 
 import { saveUser } from '../features/questions/questionSlice';
+import successAlert from '../alerts/successAlert';
+import errorAlert from '../alerts/errorAlert';
 
 const CreateUserForm = () => {
     const dispatch = useDispatch()
@@ -18,22 +20,27 @@ const CreateUserForm = () => {
         e.preventDefault();
         for(const property in newUser){
             if(newUser[property]===""){
-                return alert("Todos los datos son necesarios para crear un nuevo usuario")
+                return errorAlert("Todos los datos son necesarios para crear un nuevo usuario")
             }
         }
-        console.log("uuuuu la la la ");
+        //console.log("uuuuu la la la ");
         await createNewUser(newUser)
             .then( answer =>{
-                console.log(answer.data);
+                //console.log(answer.data);
                 sessionStorage.setItem('t',answer.data.body.token)
                 sessionStorage.setItem('n',answer.data.body.name)
                 sessionStorage.setItem('r',answer.data.body.rol)
-                alert(answer.data.message)
-                window.location.href='/'
+                successAlert(answer.data.message)
+                //alert(answer.data.message)
+                //window.location.href='/'
+                setTimeout(() => {
+                    window.location.href='/'  
+                  }, 2500);
             })
             .catch( error => {
                 console.log(error.data);
-                alert(error.data.body.message)
+                //alert(error.data.body.message)
+                errorAlert(error.data.body.message)
             })
 
         // const answer = await createNewUser(newUser)

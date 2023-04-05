@@ -7,6 +7,8 @@ import QuestionsPanel from '../components/QuestionsPanel';
 import ResultsTest from '../components/ResultsTest';
 import TestsTable from '../components/TestsTable';
 import { addResults,finishedTest } from '../features/questions/questionSlice';
+import infoAlert from '../alerts/infoAlert';
+import errorAlert from '../alerts/errorAlert';
 
 const Test = () => {
     const dispatch = useDispatch()
@@ -19,10 +21,11 @@ const Test = () => {
                 dispatch(addResults(answers.data.califications))
                 //console.log(answers.data.score.points)
                 //console.log(questions.evaluation[0].test,"este es el numero de test");
-                alert(`${answers.data.score.points[answers.data.score.points.length-1].points} respuestas correctas de ${answers.data.score.points[answers.data.score.points.length-1].questions} preguntas`)
+                //alert(`${answers.data.score.points[answers.data.score.points.length-1].points} respuestas correctas de ${answers.data.score.points[answers.data.score.points.length-1].questions} preguntas`)
+                infoAlert(`${answers.data.score.points[answers.data.score.points.length-1].points} respuestas correctas de ${answers.data.score.points[answers.data.score.points.length-1].questions} preguntas`)
             })
             .catch( e=>{
-                console.log(e);
+                errorAlert(e)
             })
         dispatch(finishedTest());
     }
