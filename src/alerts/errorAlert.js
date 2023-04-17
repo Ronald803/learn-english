@@ -4,8 +4,8 @@ const errorAlert = (msg) => {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Algo salió mal!',
-        footer: msg
+        text: msg,
+        footer: 'Algo salió mal!'
       })
 }
 

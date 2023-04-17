@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { getQuestionsBackend,getTestsBackend } from '../axiosRequests/Tests/axiosService'
 import { useDispatch, useSelector } from 'react-redux';
 import { cleanEvaluation, getQuestions } from '../features/questions/questionSlice';
+import errorAlert from '../alerts/errorAlert';
 
 const ExamRequest = () => {
     const dispatch = useDispatch()
@@ -40,7 +41,8 @@ const ExamRequest = () => {
         console.log({number});
         let n = sessionStorage.getItem('n')
         if(!n){
-            return alert("Debes iniciar sesión para solicitar examenes")
+            //return alert("Debes iniciar sesión para solicitar examenes")
+            return errorAlert("Debes iniciar sesión para solicitar examenes")
         }
         getQuestionsBackend(number)
             .then( questions => {
@@ -50,8 +52,7 @@ const ExamRequest = () => {
             } )
 
             .catch( e=> {
-                //console.log("error");
-                alert(`Ya diste este examen / este examen no está habilitado para ti, comunícate con tu docente`)
+                errorAlert(`Ya diste este examen / este examen no está habilitado para ti, comunícate con tu docente`)
             })
     }
     return (

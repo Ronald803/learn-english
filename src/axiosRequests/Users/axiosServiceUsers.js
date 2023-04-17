@@ -8,6 +8,6 @@ const url = 'https://learn-english-backend-bay.vercel.app';
 //const url = 'https://learn-english-backend-1ymtsw2jj-ronald803.vercel.app/'
 
 export function getScoresBackend(){
-    console.log(`${url}/api/user?name=${n}`);
-    return axios.get(`${url}/api/users?_id=642a0ce827ce49b5727221c1`,{headers:{'x-token': t}})
+    console.log(`${url}/api/users`);
+    return axios.get(`${url}/api/users`,{headers:{'x-token': t}})
 }
