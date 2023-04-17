@@ -8,6 +8,7 @@ import CreateTest from './pages/CreateTest';
 import Navbar from './components/Navbar';
 import Lateral from './components/Lateral';
 import Footer from './components/Footer';
+import Scores from './pages/Scores';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route path='/login' element={<Login></Login>}/>    
               <Route path='/create-user' element={<CreateUser></CreateUser>}/>
               <Route path='/create-test' element={<CreateTest></CreateTest>}/>
+              <Route path='/scores' element={<Scores></Scores>}/>
             </Routes>
           </BrowserRouter>      
         </div>

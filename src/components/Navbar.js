@@ -8,6 +8,7 @@ const NavBar = () => {
         sessionStorage.setItem('n',"")
         sessionStorage.setItem('r',"")
     }
+    
     return (
         <nav className="navbar navbar-dark bg-dark">
             <div className="container-fluid" style={{"maxWidth": "1200px"}}>
@@ -30,9 +31,14 @@ const NavBar = () => {
                             {
                                 sessionStorage.getItem('n') 
                                 ?
-                                <li className='nav-item'>
-                                    <a className='nav-link' onClick={logOut} href='/'>{sessionStorage.getItem('n')} (Cerrar Sesión)</a>
-                                </li>
+                                <div>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="/scores">Calificaciones</a>
+                                    </li>
+                                    <li className='nav-item'>
+                                        <a className='nav-link' onClick={logOut} href='/'>{sessionStorage.getItem('n')} (Cerrar Sesión)</a>
+                                    </li>
+                                </div>
                                 :
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
