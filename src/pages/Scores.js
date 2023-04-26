@@ -34,7 +34,7 @@ const Scores = () => {
             {quaflifications.map(q=>(
                 <div>
                     <h5>{q.name}</h5>
-                    <ScoreTable scores={q.points}></ScoreTable>
+                    <ScoreTable scores={q.points} studentID={q._id}></ScoreTable>
                 </div>
             ))
             }

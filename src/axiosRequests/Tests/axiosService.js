@@ -40,3 +40,7 @@ export async function saveQuestionsBackend(newQuestions){
 export function getTestsBackend(){
     return axios.get(`${url}/api/test`)
 }
+
+export function enableFailedTest(id,test){
+    return axios.patch(`${url}/api/users/${id}`,{"test":test},{headers:{'x-token': t}})
+}
