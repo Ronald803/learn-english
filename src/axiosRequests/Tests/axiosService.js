@@ -44,3 +44,7 @@ export function getTestsBackend(){
 export function enableFailedTest(id,test){
     return axios.patch(`${url}/api/users/${id}`,{"test":test},{headers:{'x-token': t}})
 }
+
+export function deleteUserBackend(id){
+    return axios.delete(`${url}/api/users/${id}`,{headers:{'x-token': t}})
+}

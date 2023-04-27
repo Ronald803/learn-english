@@ -28,6 +28,11 @@ const ScoreTable = (props) => {
                             &&
                             <th scope='col'>Acción</th>
                         }
+                        {
+                            sessionStorage.getItem('r')==="admin"
+                            &&
+                            <th scope='col'>Acción</th>
+                        }
                     </tr>                    
                 </thead>
                 <tbody>
@@ -47,7 +52,12 @@ const ScoreTable = (props) => {
                                 {
                                     sessionStorage.getItem('r')==="teacher"
                                     &&
-                                    <th scope='col'><button onClick={()=>enableTest(score.test)}>Reactivar</button></th>
+                                    <th scope='col'><button className='btn btn-warning ' onClick={()=>enableTest(score.test)}>Reactivar</button></th>
+                                }
+                                {
+                                    sessionStorage.getItem('r')==="admin"
+                                    &&
+                                    <th scope='col'><button className='btn btn-warning ' onClick={()=>enableTest(score.test)}>Reactivar</button></th>
                                 }
                             </tr>
                         )
