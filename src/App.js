@@ -12,10 +12,10 @@ import Scores from './pages/Scores';
 
 function App() {
   return (
-    <div >
+    <div className='fondo'>
       <Navbar></Navbar>
       <div 
-        className='d-flex justify-content-center align-items-center' 
+        className='d-flex justify-content-center align-items-center alto' 
         style={{"marginLeft":"auto","marginRight":"auto","maxWidth":"1200px"}}  
       >
         {/* <div className='col-md-3'>

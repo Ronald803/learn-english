@@ -9,39 +9,25 @@ const ExamRequest = () => {
     const [tests, setTests] = useState([]);
     const [req, setReq] = useState(false);
     useEffect(() => {
-     
-        return () => {
-            getExam();    
-        };
+        getExam(false)
     }, []);
-    const getExam = async ()=>{
+    const getExam = async (parametro)=>{
         getTestsBackend()
             .then( tests => {
-                console.log(tests);
-                setTests(tests.data.body)
+                console.log(tests.data.body);
+                console.log({parametro});
+                let selectedExams = [];
+                parametro ? tests.data.body.map(t=>{ if(t.type===parametro){selectedExams.push(t)} }) : selectedExams=[]
+                setTests(selectedExams)
             })
             .catch( e => {
                 console.log({e});
             } )
-        // let n = sessionStorage.getItem('n')
-        // if(!n){
-        //     return alert("Debes iniciar sesión para solicitar examenes")
-        // }
-        // getQuestionsBackend()
-        //     .then( questions => {
-        //         console.log(questions.data);
-        //         dispatch(cleanEvaluation())
-        //         dispatch(getQuestions(questions.data))
-        //     } )
-        //     .catch( e=> {
-        //         alert(`Something went wrong: ${e}`)
-        //     })
     }
     const getQues = (number)=>{
         console.log({number});
         let n = sessionStorage.getItem('n')
         if(!n){
-            //return alert("Debes iniciar sesión para solicitar examenes")
             return errorAlert("Debes iniciar sesión para solicitar examenes")
         }
         getQuestionsBackend(number)
@@ -57,9 +43,16 @@ const ExamRequest = () => {
     }
     return (
         <div className='text-center'>
-            <button onClick={getExam} className='btn btn-primary' style={{"marginBottom":"10px"}}>Solicitar exámenes</button>
-            <div>
-                <table className='table table-dark table-bordered'>
+            <div className='row'>
+                <div className='col-sm-6'>
+                    <button onClick={()=>getExam('book')} className='btn btn-success' style={{"marginBottom":"10px"}}>Solicitar exámenes</button>
+                </div>
+                <div className='col-sm-6'>
+                    <button onClick={()=>getExam('listening')} className='btn btn-success'>Practica Listenings</button>
+                </div>
+            </div>
+            <div className=''>
+                <table className='table table-dark table-bordered test-table'>
                     <thead>
                         <tr>
                             <th scope='col'>Number</th>
@@ -83,7 +76,7 @@ const ExamRequest = () => {
                                         <span>{test.level}</span>
                                     </td>
                                     <td>
-                                        <button onClick={()=>getQues(test.number)} className='btn btn-primary' >Start Test</button>
+                                        <button onClick={()=>getQues(test.number)} className='btn btn-secondary btnSecondary' >Start Test</button>
                                     </td>
                                 </tr>
                                 )

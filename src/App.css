@@ -1,6 +1,26 @@
 .App {
   text-align: center;
 }
+.fondo{
+  background: linear-gradient(
+    180deg,
+    rgb(185, 55, 50) 0%,
+    rgb(175, 39, 57) 15%,
+    rgb(107, 16, 45) 30%,
+    rgb(66, 8, 41) 45%,
+    rgb(34, 15, 33) 100%
+  );  
+}
+.alto{
+  min-height: 76vh;
+}
+.test-table{
+  min-height: 60vh;
+  min-width: 80vh;
+}
+.btnSecondary{
+  background-color: rgb(175, 39, 57)  ;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
