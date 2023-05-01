@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+    import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     evaluation: [],
@@ -8,7 +8,9 @@ const initialState = {
         rol:''
     },
     statusTest: false,
-    newQuestions: []
+    newQuestions: [],
+    type: '',
+    auxiliar: ''
 }
 export const questionSlice = createSlice({
     name: 'question',
@@ -83,7 +85,10 @@ export const questionSlice = createSlice({
                 console.log(value,i,j,k);
                 state.newQuestions[i][j][k] = value
             }
-        }
+        },
+        setTypeTest: (state,action)=>{state.type = action.payload;},
+        setAuxiliar: (state,action)=>{state.auxiliar=action.payload}
+
     }
 })
 
@@ -95,6 +100,8 @@ export const {      addAnswer,
                     saveUser,
                     saveQuestion,
                     setNewTest,
-                    updateQuestion
+                    updateQuestion,
+                    setTypeTest,
+                    setAuxiliar
                 } = questionSlice.actions
-export default questionSlice.reducer
+export default questionSlice.reducer 

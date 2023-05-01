@@ -1,5 +1,7 @@
 import React from 'react';
 import { enableFailedTest } from '../axiosRequests/Tests/axiosService';
+import successAlert from '../alerts/successAlert';
+import errorAlert from '../alerts/errorAlert'
 
 const ScoreTable = (props) => {
     const scores = props.scores
@@ -10,9 +12,13 @@ const ScoreTable = (props) => {
         enableFailedTest(studentID,test)
             .then( user=>{
                 console.log(user.data);
+                successAlert(user.data.message)
+                setTimeout(()=>{
+                    window.location.reload()
+                },2000)
             })
             .catch(e=>{
-                console.log(e);
+                errorAlert("")
             })
     }
     return (

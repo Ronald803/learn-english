@@ -13,7 +13,7 @@ const CreateTest = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(setNewTest(test))
-        setTestSet(true)
+        setTestSet(true)        
     }
     const handleChange = (e) => {   
         test[e.target.name] = e.target.value

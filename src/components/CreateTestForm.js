@@ -2,10 +2,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveQuestionsBackend } from '../axiosRequests/Tests/axiosService';
 import { saveQuestion, updateQuestion } from '../features/questions/questionSlice';
+import { useNavigate } from 'react-router-dom';
+import successAlert from '../alerts/successAlert';
 
 
 const CreateTestForm = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const questions = useSelector(state=>state.questions.newQuestions)
     console.log({questions});
     const handleSubmit = async (e) => {
@@ -15,20 +18,27 @@ const CreateTestForm = () => {
                 answer.map( q=>{
                     console.log(q.data);
                 })
+                successAlert("Pregunta(s) registrada(s) correctamente")
+                setTimeout(()=>{
+                    navigate('/')
+                },2000)
+        
             })
             .catch( e => {
                 console.log(e);
             })
     }
     const handleAllChanges = (value,i,j,k) => {
-        console.log({value},{i},{j},{k});
+        //console.log({value},{i},{j},{k});
         dispatch(updateQuestion({value,i,j,k}))
     }
     return (
-        <div>
+        <div className='container mt-3'>
+            <div className='row g-3'>
             {
                 questions.map( (q,i) => (
-                    <div className='card' key={i}>
+                    <div className='col-12 col-md-6 col-lg-4'>
+                        <div className='card' key={i}>
                         <div className='card-body'>
                             <label className='form-label' htmlFor='question'>Question {i+1}:</label>
                             <textarea 
@@ -58,9 +68,12 @@ const CreateTestForm = () => {
                             />
                         </div>                            
                     </div>
+                    </div>
                 ))
             }
             <button className='btn btn-dark' onClick={handleSubmit}>Save Question</button>
+ 
+            </div>
         </div>
     );
 }

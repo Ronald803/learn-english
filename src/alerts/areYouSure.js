@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-const areYouSure = (action) => {
+const areYouSure = (action,parametro) => {
     Swal.fire({
         title: 'Estás seguro?',
         text: "No podrás revertir esta acción!",
@@ -11,12 +11,25 @@ const areYouSure = (action) => {
         confirmButtonText: 'Si, elimínalo!'
     }).then((result) => {
         if (result.isConfirmed) {
-            action()
-            Swal.fire(
-                'Eliminado!',
-                'Tu petición fue aceptada.',
-                'success'
-            )
+            action(parametro)
+                .then( answer=>{
+                    Swal.fire(
+                        'Eliminado!',
+                        'Tu petición fue aceptada.',
+                        'success'
+                    )
+                    setTimeout(()=>{
+                        window.location.reload()
+                    },2000)
+                })
+                .catch(e=>{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: e,
+                        footer: 'Algo salió mal!'
+                      })
+                })            
         }
     })
 

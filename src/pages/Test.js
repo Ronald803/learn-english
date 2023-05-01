@@ -26,6 +26,7 @@ const Test = () => {
             })
             .catch( e=>{
                 errorAlert(e)
+                console.log({e});
             })
         dispatch(finishedTest());
     }
@@ -34,25 +35,19 @@ const Test = () => {
             {
                 questions.evaluation.length===0 
                 ? 
-                <ExamRequest></ExamRequest>
+                <ExamRequest/>
                 :
                 <div className='card'>
                 <div className='card-body'>
                     { 
                         questions.statusTest 
                         ?
-                        <div>
-                            <ResultsTest></ResultsTest>
-                        </div>
+                        <div><ResultsTest/></div>
                         :
                         <div>
                             <div className='row'>
-                                <div className='col-2'>
-                                    <QuestionsPanel></QuestionsPanel>
-                                </div>
-                                <div className='col-10'>
-                                    <QuestionsList></QuestionsList>
-                                </div>
+                                <div className='col-2'><QuestionsPanel/></div>
+                                <div className='col-10'><QuestionsList/></div>
                             </div>
                             <hr/>
                             <div className='text-center'>
@@ -61,8 +56,6 @@ const Test = () => {
                         </div>
                     }
                 </div>
-                
-
                 </div>                
             }
             {/* <TestsTable></TestsTable> */}

@@ -23,51 +23,35 @@ const Scores = () => {
         getScores();
         setInfo(true)
     },[])
-    function deleteUser(id){
-        console.log({id});
-        function deleteU (){
-            console.log(`El usuario con el ID: ${id} fue eliminado`)
-            deleteUserBackend(id)
-                .then(userDeleted=>{
-                    console.log(userDeleted.data);
-                })
-                .catch(e=>{
-                    console.log(e);
-                })
-        }
-        areYouSure(deleteU)
-    }
+    function deleteUser(id){ areYouSure(deleteUserBackend,id) }
     return (
         <div className='text-center mt-2'>
             <button onClick={()=>getScores()} className='btn btn-primary'> Solicitar notas </button>
-            {
-                info 
-                &&
-                <div>
-                {/* <ScoreTable scores={quaflifications}></ScoreTable>     */}
-                </div>
-            }
-            {quaflifications.map(q=>(
-                <div className='card border-dark mt-2'>
-                    <div className='card-header'>
-                        <div className='row'>
-                            <div className='col-sm-10'>
-                                <h5>{q.name}</h5>    
-                            </div>
-                            {
-                                sessionStorage.getItem('r')==="admin"
-                                &&
-                                <div className='col-sm-2'>
-                                    <button onClick={()=>deleteUser(q._id)} className='btn btn-danger'>Del</button>
+            <div className='container'>
+                <div className='row'>
+                    {quaflifications.map(q=>(
+                        <div className='col-12 col-md-6'>
+                            <div className='card border-dark mt-2'>
+                                <div className='card-header'>
+                                    <div className='row'>
+                                        <div className='col-sm-10'>
+                                            <h5>{q.name}</h5>    
+                                        </div>
+                                        {
+                                            sessionStorage.getItem('r')==="admin"
+                                            &&
+                                            <div className='col-sm-2'>
+                                                <button onClick={()=>deleteUser(q._id)} className='btn btn-danger'>Del</button>
+                                            </div>
+                                        }
+                                    </div>                                
                                 </div>
-                            }
-                        </div>
-
-                    </div>
-                    <ScoreTable scores={q.points} studentID={q._id}></ScoreTable>
+                                <ScoreTable scores={q.points} studentID={q._id}></ScoreTable>
+                            </div>
+                        </div>))
+                    }                    
                 </div>
-            ))
-            }
+            </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import { getQuestionsBackend,getTestsBackend } from '../axiosRequests/Tests/axiosService'
 import { useDispatch, useSelector } from 'react-redux';
-import { cleanEvaluation, getQuestions } from '../features/questions/questionSlice';
+import { cleanEvaluation, getQuestions, setTypeTest,setAuxiliar } from '../features/questions/questionSlice';
 import errorAlert from '../alerts/errorAlert';
 
 const ExamRequest = () => {
@@ -18,25 +18,23 @@ const ExamRequest = () => {
                 console.log({parametro});
                 let selectedExams = [];
                 parametro ? tests.data.body.map(t=>{ if(t.type===parametro){selectedExams.push(t)} }) : selectedExams=[]
+                dispatch(setTypeTest(parametro))
                 setTests(selectedExams)
             })
             .catch( e => {
                 console.log({e});
             } )
     }
-    const getQues = (number)=>{
-        console.log({number});
+    const getQues = (number,aux)=>{
         let n = sessionStorage.getItem('n')
-        if(!n){
-            return errorAlert("Debes iniciar sesión para solicitar examenes")
-        }
+        if(!n){return errorAlert("Debes iniciar sesión para solicitar examenes")}
+        dispatch(setAuxiliar(aux))
         getQuestionsBackend(number)
             .then( questions => {
                 console.log(questions.data.foundedQuestions);
                 dispatch(cleanEvaluation())
                 dispatch(getQuestions(questions.data.foundedQuestions))
             } )
-
             .catch( e=> {
                 errorAlert(`Ya diste este examen / este examen no está habilitado para ti, comunícate con tu docente`)
             })
@@ -76,7 +74,7 @@ const ExamRequest = () => {
                                         <span>{test.level}</span>
                                     </td>
                                     <td>
-                                        <button onClick={()=>getQues(test.number)} className='btn btn-secondary btnSecondary' >Start Test</button>
+                                        <button onClick={()=>getQues(test.number,test.auxiliar)} className='btn btn-secondary btnSecondary' >Start Test</button>
                                     </td>
                                 </tr>
                                 )

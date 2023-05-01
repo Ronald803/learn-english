@@ -74,6 +74,13 @@ const NavBar = () => {
                                     <a className="nav-link" aria-current="page" href="/create-test">Create Test</a>
                                 </li>
                             }
+                            {
+                                sessionStorage.getItem('r')==="admin"
+                                &&
+                                <li className="nav-item">
+                                    <a className="nav-link" aria-current="page" href="/create-test">Create Test</a>
+                                </li>
+                            }
                         </ul>
                         {/* <form class="d-flex mt-3" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>

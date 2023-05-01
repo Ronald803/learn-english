@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {useSelector} from 'react-redux'
 import { useDispatch } from 'react-redux';
 import { addAnswer } from '../features/questions/questionSlice';
 import "./css/QuestionsList.css";
+import Audio from './Audio';
 
 const QuestionsList = () => {
     const dispatch = useDispatch()
@@ -11,11 +12,14 @@ const QuestionsList = () => {
         dispatch(addAnswer({value,id}))
     }
     const questions = useSelector(state => state.questions)
-    console.log(questions.evaluation, 'from questions List');
+    const type = useSelector(state=>state.questions.type)
+    console.log({type});
 
     return (
         <div className='question-list'>
-            {/* <h3>Questions List</h3> */}
+            {
+                type==="listening" && <Audio/>
+            }
             {questions.evaluation.map( (question,index) => (
                 <div key={question._id} className='card mb-2'>
                     
