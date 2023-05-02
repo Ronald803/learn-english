@@ -23,7 +23,6 @@ export function createNewUser(user){
 }
 
 export function login(user){
-    //return axios.post('http://localhost:4000/api/auth',user)
     return axios.post(`${url}/api/auth`,user)
 }
 
@@ -47,4 +46,9 @@ export function enableFailedTest(id,test){
 
 export function deleteUserBackend(id){
     return axios.delete(`${url}/api/users/${id}`,{headers:{'x-token': t}})
+}
+
+export function postNewTest(test){
+    console.log(test);
+    return axios.post(`${url}/api/test`,test,{headers:{'x-token': t}})
 }

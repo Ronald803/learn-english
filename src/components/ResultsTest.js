@@ -5,10 +5,10 @@ const ResultsTest = () => {
     const questions = useSelector(state => state.questions)
     console.log(questions.evaluation);
     return (
-        <div style={{"width": "28rem"}}>
+        <div className='row'>
              <h3>Questions List</h3>
             {questions.evaluation.map( question => (
-                <div className='card' key={question._id} style={
+                <div className='card col-12 col-md-6' key={question._id} style={
                                             {
                                                 borderColor: question.result==="Correct" 
                                                 ? 

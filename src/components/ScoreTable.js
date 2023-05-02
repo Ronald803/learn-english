@@ -6,7 +6,6 @@ import errorAlert from '../alerts/errorAlert'
 const ScoreTable = (props) => {
     const scores = props.scores
     const studentID = props.studentID
-    console.log({scores});
     const enableTest = (test)=>{
         console.log({studentID},{test});
         enableFailedTest(studentID,test)

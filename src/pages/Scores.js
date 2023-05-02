@@ -24,13 +24,15 @@ const Scores = () => {
         setInfo(true)
     },[])
     function deleteUser(id){ areYouSure(deleteUserBackend,id) }
+    let clase = "";
+    if(quaflifications.length>1){clase="col-12 col-md-6"}
     return (
         <div className='text-center mt-2'>
             <button onClick={()=>getScores()} className='btn btn-primary'> Solicitar notas </button>
-            <div className='container'>
+            <div className=''>
                 <div className='row'>
                     {quaflifications.map(q=>(
-                        <div className='col-12 col-md-6'>
+                        <div className={clase}>
                             <div className='card border-dark mt-2'>
                                 <div className='card-header'>
                                     <div className='row'>

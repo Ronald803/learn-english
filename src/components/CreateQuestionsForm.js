@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import successAlert from '../alerts/successAlert';
 
 
-const CreateTestForm = () => {
+const CreateQuestionsForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const questions = useSelector(state=>state.questions.newQuestions)
@@ -78,4 +78,4 @@ const CreateTestForm = () => {
     );
 }
 
-export default CreateTestForm;
+export default CreateQuestionsForm;

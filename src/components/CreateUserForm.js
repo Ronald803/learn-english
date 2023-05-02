@@ -42,18 +42,12 @@ const CreateUserForm = () => {
                 //alert(error.data.body.message)
                 errorAlert(error.data.body.message)
             })
-
-        // const answer = await createNewUser(newUser)
-        // console.log(answer);
-        // dispatch(saveUser(answer.data.body))
-
     }
     const handleChange = (e) => {
         setNewUser({
             ...newUser,
             [e.target.name]: e.target.value
         })
-        
     }
     return (
         <div className='card'>

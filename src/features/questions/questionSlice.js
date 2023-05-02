@@ -55,14 +55,14 @@ export const questionSlice = createSlice({
         },
         setNewTest: (state,action)=>{
             console.log(action.payload);
-            const {qu,t} =action.payload
-            for(let i=0; i<qu; i++){
+            const {questions,number} =action.payload
+            for(let i=0; i<questions; i++){
                 state.newQuestions.push({
                     question: '',
                     answers: ['','','','',''],
                     response: '',
                     i,
-                    test: t
+                    test: number
                 })
             }
         },

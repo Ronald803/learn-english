@@ -17,32 +17,27 @@ const Test = () => {
     const getAnswers=()=>{
         checkAnswers(questions.evaluation)
             .then( answers => {
-                //console.log(answers.data);
                 dispatch(addResults(answers.data.califications))
-                //console.log(answers.data.score.points)
-                //console.log(questions.evaluation[0].test,"este es el numero de test");
-                //alert(`${answers.data.score.points[answers.data.score.points.length-1].points} respuestas correctas de ${answers.data.score.points[answers.data.score.points.length-1].questions} preguntas`)
                 infoAlert(`${answers.data.score.points[answers.data.score.points.length-1].points} respuestas correctas de ${answers.data.score.points[answers.data.score.points.length-1].questions} preguntas`)
             })
             .catch( e=>{
                 errorAlert(e)
-                console.log({e});
             })
         dispatch(finishedTest());
     }
     return (
-        <div style={{"marginTop":"10px","width":"100%"}}>
+        <div className='container mt-2'>
             {
                 questions.evaluation.length===0 
                 ? 
                 <ExamRequest/>
                 :
-                <div className='card'>
-                <div className='card-body'>
+                <div className=''>
+                <div className=''>
                     { 
                         questions.statusTest 
                         ?
-                        <div><ResultsTest/></div>
+                        <div className='container d-flex justify-content-center'><ResultsTest/></div>
                         :
                         <div>
                             <div className='row'>
