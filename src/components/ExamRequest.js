@@ -42,18 +42,18 @@ const ExamRequest = () => {
     return (
         <div className='text-center'>
             <div className='row'>
-                <div className='col-sm-6'>
+                <div className='col-6'>
                     <button onClick={()=>getExam('book')} className='btn btn-success' style={{"marginBottom":"10px"}}>Solicitar exámenes</button>
                 </div>
-                <div className='col-sm-6'>
+                <div className='col-6'>
                     <button onClick={()=>getExam('listening')} className='btn btn-success'>Practica Listenings</button>
                 </div>
             </div>
             <div className=''>
-                <table className='table table-dark table-bordered test-table'>
+                <table className='table table-dark table-bordered'>
                     <thead>
                         <tr>
-                            <th scope='col'>Number</th>
+                            <th scope='col'>#</th>
                             <th scope='col'>Name</th>
                             <th scope='col'>Level</th>
                             <th scope='col'></th>
@@ -74,7 +74,7 @@ const ExamRequest = () => {
                                         <span>{test.level}</span>
                                     </td>
                                     <td>
-                                        <button onClick={()=>getQues(test.number,test.auxiliar)} className='btn btn-secondary btnSecondary' >Start Test</button>
+                                        <button onClick={()=>getQues(test.number,test.auxiliar)} className='btn btn-secondary btnSecondary' >Start</button>
                                     </td>
                                 </tr>
                                 )

@@ -1,6 +1,7 @@
 import React from 'react';
 import CreateUserForm from './CreateUserForm';
 import LoginForm from './LoginForm';
+import Dictionary from './Dictionary';
 
 const NavBar = () => {
     const logOut = ()=>{
@@ -65,6 +66,10 @@ const NavBar = () => {
                                         </div>
                                     </li> 
                                 </ul>
+                            </li>
+                            <hr/>
+                            <li className='nav-item'>
+                                <Dictionary></Dictionary>
                             </li>
                             <hr/>
                             {
