@@ -2,6 +2,7 @@ import React from 'react';
 import CreateUserForm from './CreateUserForm';
 import LoginForm from './LoginForm';
 import Dictionary from './Dictionary';
+import Translator from './Translator';
 
 const NavBar = () => {
     const logOut = ()=>{
@@ -70,6 +71,10 @@ const NavBar = () => {
                             <hr/>
                             <li className='nav-item'>
                                 <Dictionary></Dictionary>
+                            </li>
+                            <hr/>
+                            <li className='nav-item'>
+                                <Translator></Translator>
                             </li>
                             <hr/>
                             {
