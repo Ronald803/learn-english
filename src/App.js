@@ -21,8 +21,7 @@ function App() {
         {/* <div className='col-md-3'>
           <Lateral></Lateral>  
         </div> */}
-        <div style={{"width":"90%"}}>
-
+        <div>
           <BrowserRouter>
             <Routes>
               <Route path='/' element={<Home></Home>}/>

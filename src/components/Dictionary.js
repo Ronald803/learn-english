@@ -16,7 +16,7 @@ export default function Dictionary() {
             .then(response=>{
                 console.log(response.data);
                 if(response.data[0].shortdef){
-                    response.data.map(element=>{aux.push(element.shortdef[0])})
+                    response.data.map(element=>{aux.push(`${element.hwi.hw}(${element.fl}): ${element.shortdef[0]}`)})
                     setDefinitions(aux)
                 } else{ 
                     response.data.map(element=>{aux.push(`Quizas quisiste decir: ${element}`)})
@@ -48,7 +48,6 @@ return (
                 <input type='text' className='form-control' id='newWord' placeholder='Type a word' name='word' onChange={handleChange}/>
                 <button className='btn btn-outline-secondary' id='button-addon2'>Search</button>           
             </div>
-
         </form>
         {
             definitions.length>0

@@ -42,32 +42,33 @@ const NavBar = () => {
                                     </li>
                                 </div>
                                 :
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Iniciar sesión
-                                    </a>
-                                    <ul className="dropdown-menu dropdown-menu-dark">
-                                        <li>
-                                            <div className='dropdown-item'>
-                                            <LoginForm></LoginForm>
-                                            </div>
-                                        </li> 
-                                    </ul>
-                                </li>
-                            }
-                            
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Crear Usuario
-                                </a>
-                                <ul className="dropdown-menu dropdown-menu-dark">
-                                    <li>
-                                        <div className='dropdown-item'>
-                                        <CreateUserForm></CreateUserForm>
-                                        </div>
-                                    </li> 
-                                </ul>
-                            </li>
+                                <div>
+                                    <li className="nav-item dropdown">
+                                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Iniciar sesión
+                                        </a>
+                                        <ul className="dropdown-menu dropdown-menu-dark">
+                                            <li>
+                                                <div className='dropdown-item'>
+                                                <LoginForm></LoginForm>
+                                                </div>
+                                            </li> 
+                                        </ul>
+                                    </li>
+                                    <li className="nav-item dropdown">
+                                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Crear Usuario
+                                        </a>
+                                        <ul className="dropdown-menu dropdown-menu-dark">
+                                            <li>
+                                                <div className='dropdown-item'>
+                                                <CreateUserForm></CreateUserForm>
+                                                </div>
+                                            </li> 
+                                        </ul>
+                                    </li>
+                                </div>
+                            }                            
                             <hr/>
                             <li className='nav-item'>
                                 <Dictionary></Dictionary>

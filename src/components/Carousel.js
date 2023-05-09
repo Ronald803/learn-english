@@ -8,9 +8,6 @@ const Carousel = () => {
           <img src="./img/principal.jpg" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-          <img src="../img/img-portada3.jpg" class="d-block w-100" alt="..." />
-        </div>
-        <div class="carousel-item">
           <img src="../img/bins.jpg" class="d-block w-100" alt="..." />
         </div>
       </div>

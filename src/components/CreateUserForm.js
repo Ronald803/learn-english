@@ -50,94 +50,83 @@ const CreateUserForm = () => {
         })
     }
     return (
-        <div className='card'>
+        <div className='bg-transparent text-white card border-white'>
             <form
                 onSubmit={handleSubmit}
-                className='card-body'
+                className='bg-transparent text-white card-body'
             >
-                <div>
-                    <label 
-                        htmlFor='name'
-                        className='form-label'
-                    >
-                        Apellidos y Nombres 
-                    </label>
+                <div className='input-group'>
+                    <span htmlFor='name' className='bg-transparent text-white input-group-text'>Nombre</span>
                     <input
                         type='text'
                         id='name'
                         name='name'
                         onChange={handleChange}
-                        className='form-control'
+                        className='bg-transparent text-white form-control'
                     />
                 </div>
                 
-                <div>
-                    <label htmlFor='email'>Email </label>
+                <div className='bg-transparent text-white input-group'>
+                    <span htmlFor='email' className='bg-transparent text-white input-group-text'>Email </span>
                     <input
                         type='text'
                         id='email'
                         name='email'
                         onChange={handleChange}
-                        className='form-control'
+                        className='bg-transparent text-white form-control'
                     />
                 </div>
                 
-                <div>
-                    <label htmlFor='cellphone'>Celular </label>
+                <div className='bg-transparent text-white input-group'>
+                    <span htmlFor='cellphone' className='bg-transparent text-white input-group-text'>Celular </span>
                     <input
                         type='text'
                         id='cellphone'
                         name='cellphone'
                         onChange={handleChange}
-                        className='form-control'
+                        className='bg-transparent text-white form-control'
                     />
                 </div>
-                
-                <div>
-                    <label htmlFor='password'>Contraseña:</label>
+                <div className='bg-transparent text-white input-group'>
+                    <span htmlFor='password' className='bg-transparent text-white input-group-text'>Contraseña:</span>
                     <input
                         type='password'
                         id='password'
                         name='password'
                         onChange={handleChange}
-                        className='form-control'
+                        className='bg-transparent text-white form-control'
                     />
                 </div>
-                
-                <div className='row'>
-                    <div className='col'>
-                        <label htmlFor='level'>Nivel </label>
-                        <select 
-                            name='level'
-                            id='level'
+                <div className='bg-transparent text-white input-group'>
+                    <span htmlFor='level' className='bg-transparent text-white input-group-text'>Nivel </span>
+                    <select 
+                        name='level'
+                        id='level'
+                        onChange={handleChange}
+                        className='bg-transparent form-select'
+                    >
+                        <option value="">Elige una opción</option>
+                        <option value='Básico'>Básico</option>
+                        <option value='Auxiliar'>Auxiliar</option>
+                        <option value='Medio I'>Medio I</option>
+                        <option value='Medio II'>Medio II</option>
+                    </select>
+                </div>
+                <div className='bg-transparent text-white input-group'>
+                    <span htmlFor='schedule' className='bg-transparent text-white input-group-text'>Horario</span>
+                        <select
+                            name='schedule'
+                            id='schedule'
                             onChange={handleChange}
-                            className='col form-select'
+                            className='bg-transparent form-select'
                         >
                             <option value="">Elige una opción</option>
-                            <option value='Básico'>Básico</option>
-                            <option value='Auxiliar'>Auxiliar</option>
-                            <option value='Medio I'>Medio I</option>
-                            <option value='Medio II'>Medio II</option>
+                            <option value='Mañana'>Mañana</option>
+                            <option value='Tarde'>Tarde</option>
+                            <option value='Noche'>Noche</option>
                         </select>
-                    </div>
-                    <div className='col'>
-                        <label htmlFor='schedule'>Horario</label>
-                            <select
-                                name='schedule'
-                                id='schedule'
-                                onChange={handleChange}
-                                className='form-select'
-                            >
-                                <option value="">Elige una opción</option>
-                                <option value='Mañana'>Mañana</option>
-                                <option value='Tarde'>Tarde</option>
-                                <option value='Noche'>Noche</option>
-                            </select>
-                    </div>
                 </div>
-                
-               
-                <button className='btn btn-secondary'>Registrarse</button>
+                <button className='bg-transparent text-white mt-2 btn btn-secondary'>Registrarse</button>
             </form>
         </div>
         
