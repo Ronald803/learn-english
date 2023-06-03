@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Lateral from './components/Lateral';
 import Footer from './components/Footer';
 import Scores from './pages/Scores';
+import Games from './pages/Games';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               <Route path='/create-user' element={<CreateUser></CreateUser>}/>
               <Route path='/create-test' element={<CreateTest></CreateTest>}/>
               <Route path='/scores' element={<Scores></Scores>}/>
+              <Route path='/games' element={<Games></Games>}/>
             </Routes>
           </BrowserRouter>      
         </div>

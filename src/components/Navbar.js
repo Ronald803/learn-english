@@ -78,6 +78,9 @@ const NavBar = () => {
                                 <Translator></Translator>
                             </li>
                             <hr/>
+                            <li className='nav-item'>
+                                <a className='nav-link' aria-current='page' href='/games'>Games</a>
+                            </li>
                             {
                                 sessionStorage.getItem('r')==="teacher"
                                 &&
