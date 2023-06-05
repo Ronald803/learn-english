@@ -1,31 +1,27 @@
-import React from 'react'
+import React,{useState} from 'react'
+import StopForm from './StopForm';
+import RoundStopForm from './RoundStopForm';
 
 function Stop() {
-    const categories = ['Name','Color','Country','City','Preposition','Regular verb','Irregular verb',]
-  return (
-    <div className='card'>
-        <div className='text-center'>
-            <h1>A</h1>
-        </div>
-        <div className='card-body'>
-            <form>
-                {
-                    categories.map( cat =>{
-                        return(
-                            <div className="mb-1 row">
-                                <label for={cat}  class="col-sm-4 col-form-label">{cat}: </label>
-                                <div className='col-sm-8'>
-                                    <input className="form-control-plaintext" type="text" id={cat} />
-                                </div>
-                            </div>        
-                        )
-                    })
-                }
-                <div className='text-center'>
-                    <button type='submit' className='btn btn-primary'>Stop!!!</button>
-                </div>
-            </form>
-        </div>
+  const [newRoundStop, setnewRoundStop] = useState(false);
+
+return (
+    <div>
+      <div className='text-center'>
+        <button onClick={()=>setnewRoundStop(!newRoundStop)} className='btn btn-success'>Nuevo Round</button>
+      </div>
+      {
+            newRoundStop
+            ?
+            <div>
+              <RoundStopForm></RoundStopForm>
+            </div>
+            :
+            <div>
+                false
+            </div>            
+        }
+        <StopForm></StopForm>
     </div>
   )
 }
