@@ -5,7 +5,7 @@ const successAlert = (msg) => {
         icon: 'success',
         title: msg,
         showConfirmButton: false,
-        timer: 1500
+        timer: 2000
       })
 }
 

@@ -1,6 +1,11 @@
 import React from 'react'
+import { putAnswersBackend } from '../axiosRequests/Stops/axiosServiceStops';
+import successAlert from '../alerts/successAlert';
+import errorAlert from '../alerts/errorAlert';
 
-function StopForm() {
+function StopForm(props) {
+    const round = props.round;
+    console.log({round});
     const categories = ['Name','Color','Country','City','Preposition','Regular_verb','Irregular_verb','Adjective']
     let words = {
         Name: "",
@@ -14,15 +19,30 @@ function StopForm() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({words});
+        //console.log({words});
+        putAnswersBackend(round.id,words)
+            .then(answer=>{
+                //console.log(answer.data);
+                if(answer.data.body == -1){
+                    errorAlert(answer.data.message)
+                } else {
+                    successAlert(`${answer.data.message}, eres el número ${answer.data.body}`)
+                }
+                setTimeout(()=>{
+                    window.location.reload()
+                },2500)
+            })
+            .catch(e=>{
+                console.log({e});
+            })
     }
     const handleChange = (e) => {
         words[e.target.name] = e.target.value
     }
   return (
-    <div className='card'>
+    <div className='card mt-2'>
         <div className='text-center'>
-            <h1>A</h1>
+            <h1>{round.letter}</h1>
         </div>
         <div className='card-body'>
             <form onSubmit={handleSubmit}>

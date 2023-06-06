@@ -14,6 +14,9 @@ function RoundStopForm() {
         await postRound(round)
             .then( answer=>{
                 successAlert(answer.data.message)
+                setTimeout(()=>{
+                    window.location.reload()
+                },2500)
             })
             .catch( e=>{
                 console.log(e);

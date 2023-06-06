@@ -10,3 +10,11 @@ const url = 'https://learn-english-backend-bay.vercel.app';
 export function postRound(newRound){
     return axios.post(`${url}/api/games/stop`,newRound,{headers:{'x-token': t}})
 }
+
+export function getRoundBackend(){
+    return axios.get(`${url}/api/games/stop`,{headers:{'x-token': t}})
+}
+
+export function putAnswersBackend(id,body){
+    return axios.put(`${url}/api/games/stop/${id}`,body,{headers:{'x-token':t}})
+}
