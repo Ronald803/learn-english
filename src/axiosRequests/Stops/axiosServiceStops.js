@@ -18,3 +18,8 @@ export function getRoundBackend(){
 export function putAnswersBackend(id,body){
     return axios.put(`${url}/api/games/stop/${id}`,body,{headers:{'x-token':t}})
 }
+
+export function deleteRoundBackend(id){
+    console.log(id);
+    return axios.delete(`${url}/api/games/stop/${id}`,{headers:{'x-token':t}})
+}

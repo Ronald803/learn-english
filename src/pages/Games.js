@@ -4,7 +4,7 @@ import Stop from '../components/Stop'
 function Games() {
     
   return (
-    <div>
+    <div className='' style={{"width":"100vw"}}>
         <Stop></Stop>
     </div>
   )

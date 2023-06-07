@@ -2,15 +2,18 @@ import React,{useState,useEffect} from 'react'
 import StopForm from './StopForm';
 import RoundStopForm from './RoundStopForm';
 import { getRoundBackend } from '../axiosRequests/Stops/axiosServiceStops';
+import StopResults from './StopResults';
 
 function Stop() {
   const [newRoundStop, setnewRoundStop] = useState(false);
   const [rounds, setRounds] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
-  const [roundSelected, setRoundSelected] = useState({letter:"",id:""})
-  const [roundResults, setRoundResults] = useState(false)
-  const [answersResult, setAnswersResult] = useState([])
-  const r = sessionStorage.getItem('r')
+  const [roundSelected, setRoundSelected] = useState({letter:"",id:""});
+  const [roundResults, setRoundResults] = useState(false);
+  const [answersResult, setAnswersResult] = useState([]);
+  const [winnersResult, setWinnersResult] = useState([]);
+  const [roundsTable, setRoundsTable] = useState(true)
+  const r = sessionStorage.getItem('r');
   let student = false
   if(r!="admin" && r!="teacher"){student = true}
   useEffect(()=>{
@@ -29,15 +32,17 @@ function Stop() {
   const setRound = async(letra,id)=>{
     setRoundSelected({letter:letra,id})
     setGameStarted(true);
+    setRoundsTable(false)
     console.log({letra});
   }
-  const setResults = async(winners)=>{
+  const setResults = async(winners,id)=>{
+    setRoundSelected({id})
     setRoundResults(true);
-    setAnswersResult(winners)    
-    console.log(answersResult);
+    setAnswersResult(winners);
+    setRoundsTable(false)
   }
 return (
-    <div>
+    <div className='px-2' style={{"maxWidth":"450px","margin":"auto"}} >
       {
         !student 
         &&
@@ -51,10 +56,10 @@ return (
         <div><RoundStopForm/></div>            
       }
       {
-        !gameStarted
+        roundsTable
         &&
         <div>
-        <table className='table table-dark table-bordered'>
+        <table className='table table-dark table-bordered text-center'>
           <thead>
             <tr>
               <th scope='col'>Round</th>
@@ -87,9 +92,9 @@ return (
                       {
                         round.state
                         ?
-                        <button onClick={()=>setRound(round.letter,round._id)}>Jugar</button>
+                        <button onClick={()=>setRound(round.letter,round._id)} className='btn btn-warning'>Jugar</button>
                         :
-                        <button onClick={()=>setResults(round.winners)}>Ver Resultados</button>
+                        <button onClick={()=>setResults(round.winners,round._id)} className='btn btn-warning'>Ver Resultados</button>
                       }
                     </td>
                   </tr>
@@ -108,9 +113,7 @@ return (
       {
         roundResults
         &&
-        <div>
-          Respuestas
-        </div>
+        <div><StopResults winners={answersResult} round={roundSelected}/></div>
       }
     </div>
   )
