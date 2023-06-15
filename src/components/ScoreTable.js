@@ -44,7 +44,7 @@ const ScoreTable = (props) => {
                     {
                      scores.map( (score,index)=>{
                         return(
-                            <tr className='text-center'>
+                            <tr className='text-center' key={index}>
                                 <th>
                                     <span>{score.test}</span>
                                 </th>

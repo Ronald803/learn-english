@@ -31,24 +31,32 @@ const Scores = () => {
             <button onClick={()=>getScores()} className='btn btn-primary'> Solicitar notas </button>
             <div className=''>
                 <div className='row'>
-                    {quaflifications.map(q=>(
-                        <div className={clase}>
+                    {quaflifications.map((q,index)=>(
+                        <div className={clase} key={index}>
                             <div className='card bg-dark border-white mt-2'>
-                                <div className='card-header'>
-                                    <div className='row'>
-                                        <div className='col-sm-10 text-white'>
-                                            <h5>{q.name}</h5>    
-                                        </div>
-                                        {
-                                            sessionStorage.getItem('r')==="admin"
-                                            &&
-                                            <div className='col-sm-2'>
-                                                <button onClick={()=>deleteUser(q._id)} className='btn btn-info'>Del</button>
-                                            </div>
-                                        }
-                                    </div>                                
+                                <div className='card-header text-white'>
+                                    <h5>{q.name}</h5>
                                 </div>
-                                <ScoreTable scores={q.points} studentID={q._id}></ScoreTable>
+                                <div className='row py-2'>
+                                    <div className='col'>
+                                        <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target={`#${index}`} aria-expanded="false" aria-controls="collapseExample">
+                                        Ver Notas
+                                        </button>
+                                    </div> 
+                                    {
+                                    sessionStorage.getItem('r')==="admin"
+                                    &&
+                                    <div className='col'>
+                                        <button onClick={()=>deleteUser(q._id)} className='btn btn-danger'>Eliminar Usuario</button>
+                                    </div>
+                                    }
+                                </div>
+                                <div className="collapse" id={index}>
+                                    <ScoreTable scores={q.points} studentID={q._id}></ScoreTable>                                    
+                                    <button className="btn btn-primary mb-2" type="button" data-bs-toggle="collapse" data-bs-target={`#${index}`} aria-expanded="false" aria-controls="collapseExample">
+                                        Ocultar Tabla
+                                    </button>
+                                </div>
                             </div>
                         </div>))
                     }                    
