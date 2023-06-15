@@ -58,7 +58,7 @@ const LoginForm = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button className='bg-transparent text-white btn btn-secondary'>Login</button>
+                <button className=' text-white btn btn-success'>Login</button>
             </form>
         </div>
     );

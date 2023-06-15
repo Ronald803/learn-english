@@ -9,7 +9,7 @@ const ExamRequest = () => {
     const [tests, setTests] = useState([]);
     const [req, setReq] = useState(false);
     useEffect(() => {
-        getExam(false)
+        getExam('book')
     }, []);
     const getExam = async (parametro)=>{
         getTestsBackend()

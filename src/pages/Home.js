@@ -7,8 +7,10 @@ import Test from './Test';
 const Home = () => {
     const [createUser, setCreateUser] = useState(false)
     const [logged, setLogged] = useState(false)
+    const sessionStor = sessionStorage.getItem('n')
+    console.log({sessionStor});
     useEffect(()=>{
-        if(sessionStorage.getItem('n')!=""){setLogged(true)}
+        if(sessionStor==null || sessionStor===""){setLogged(false)}else{setLogged(true)}
     },[])
     function create (arg){setCreateUser(arg)}
     return (
