@@ -37,7 +37,12 @@ export async function saveQuestionsBackend(newQuestions){
 }
 
 export function getTestsBackend(){
-    return axios.get(`${url}/api/test`)
+    console.log({t});
+    if(t){
+        return axios.get(`${url}/api/test`,{headers:{'x-token': t}})        
+    } else {
+        return axios.get(`${url}/api/test`)
+    }
 }
 
 export function enableFailedTest(id,test){

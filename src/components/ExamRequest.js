@@ -56,7 +56,7 @@ const ExamRequest = () => {
                             <th scope='col'>#</th>
                             <th scope='col'>Name</th>
                             <th scope='col'>Level</th>
-                            <th scope='col'></th>
+                            <th scope='col'>Points</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,7 +74,13 @@ const ExamRequest = () => {
                                         <span>{test.level}</span>
                                     </td>
                                     <td>
-                                        <button onClick={()=>getQues(test.number,test.auxiliar)} className='btn btn-secondary btnSecondary' >Start</button>
+                                        {
+                                            test.points
+                                            ?
+                                            <span>{test.points}</span>
+                                            :
+                                            <button onClick={()=>getQues(test.number,test.auxiliar)} className='btn btn-secondary btnSecondary' >Start</button>
+                                        }
                                     </td>
                                 </tr>
                                 )
