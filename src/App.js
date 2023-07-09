@@ -16,7 +16,7 @@ function App() {
     <div className='fondo'>
       <Navbar></Navbar>
       <div 
-        className='d-flex justify-content-center align-items-center alto' 
+        className=' justify-content-center align-items-center alto' 
         style={{"marginLeft":"auto","marginRight":"auto","maxWidth":"1200px"}}  
       >
         {/* <div className='col-md-3'>

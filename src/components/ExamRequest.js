@@ -31,24 +31,27 @@ const ExamRequest = () => {
         dispatch(setAuxiliar(aux))
         getQuestionsBackend(number)
             .then( questions => {
+                console.log(questions);
                 console.log(questions.data.foundedQuestions);
                 dispatch(cleanEvaluation())
                 dispatch(getQuestions(questions.data.foundedQuestions))
             } )
             .catch( e=> {
+                console.log(e);
                 errorAlert(`Ya diste este examen / este examen no está habilitado para ti, comunícate con tu docente`)
             })
     }
+    const selector = (e) =>{
+        console.log("blablabla",e);
+    }
     return (
         <div className='text-center'>
-            <div className='row'>
-                <div className='col-6'>
-                    <button onClick={()=>getExam('book')} className='btn btn-success' style={{"marginBottom":"10px"}}>Solicitar exámenes</button>
-                </div>
-                <div className='col-6'>
-                    <button onClick={()=>getExam('listening')} className='btn btn-success'>Practica Listenings</button>
-                </div>
-            </div>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onChange={(e)=>getExam(e.target.value)}>
+                <option selected>Open this select menu</option>
+                <option value="book">Book</option>
+                <option value="listening">Listening</option>
+                <option value="video">Practice with videos</option>
+            </select>
             <div className=''>
                 <table className='table table-dark table-bordered'>
                     <thead>
@@ -75,7 +78,7 @@ const ExamRequest = () => {
                                     </td>
                                     <td>
                                         {
-                                            test.points
+                                            test.points !== null
                                             ?
                                             <span>{test.points}</span>
                                             :
