@@ -21,7 +21,11 @@ const Home = () => {
                 <div><Test/></div>
                 :
                 <div>
-                    <div style={{"maxWidth":"500px"}}><Carousel/></div>
+                    <div>
+                        <div className='card mx-auto border border-black' style={{"maxWidth":"500px"}}>
+                            <Carousel/>
+                        </div>
+                    </div>
                     {
                         createUser
                         ?

@@ -22,6 +22,10 @@ const LoginForm = () => {
                 sessionStorage.setItem('t',answer.data.body.token)
                 sessionStorage.setItem('n',answer.data.body.name)
                 sessionStorage.setItem('r',answer.data.body.rol)
+                if(answer.data.body.rol=="student"){
+                    sessionStorage.setItem('schedule',answer.data.body.schedule);
+                    sessionStorage.setItem('level',answer.data.body.level);
+                }
                 successAlert('Bienvenida '+answer.data.body.name)
                 dispatch(saveUser(answer.data.body))
                 setTimeout(() => {
