@@ -56,7 +56,7 @@ const CreateUserForm = () => {
                 className='bg-transparent text-white card-body'
             >
                 <div className='input-group'>
-                    <span htmlFor='name' className='bg-transparent text-white input-group-text'>Nombre</span>
+                    <span htmlFor='name' className='bg-transparent text-white input-group-text'>Name </span>
                     <input
                         type='text'
                         id='name'
@@ -78,7 +78,7 @@ const CreateUserForm = () => {
                 </div>
                 
                 <div className='bg-transparent text-white input-group'>
-                    <span htmlFor='cellphone' className='bg-transparent text-white input-group-text'>Celular </span>
+                    <span htmlFor='cellphone' className='bg-transparent text-white input-group-text'>Phone Number </span>
                     <input
                         type='text'
                         id='cellphone'
@@ -88,7 +88,7 @@ const CreateUserForm = () => {
                     />
                 </div>
                 <div className='bg-transparent text-white input-group'>
-                    <span htmlFor='password' className='bg-transparent text-white input-group-text'>Contraseña:</span>
+                    <span htmlFor='password' className='bg-transparent text-white input-group-text'>Password:</span>
                     <input
                         type='password'
                         id='password'
@@ -98,7 +98,7 @@ const CreateUserForm = () => {
                     />
                 </div>
                 <div className='bg-transparent text-white input-group'>
-                    <span htmlFor='level' className='bg-transparent text-white input-group-text'>Nivel </span>
+                    <span htmlFor='level' className='bg-transparent text-white input-group-text'>Level </span>
                     <select 
                         name='level'
                         id='level'
@@ -113,7 +113,7 @@ const CreateUserForm = () => {
                     </select>
                 </div>
                 <div className='bg-transparent text-white input-group'>
-                    <span htmlFor='schedule' className='bg-transparent text-white input-group-text'>Horario</span>
+                    <span htmlFor='schedule' className='bg-transparent text-white input-group-text'>Schedule</span>
                         <select
                             name='schedule'
                             id='schedule'
@@ -126,7 +126,7 @@ const CreateUserForm = () => {
                             <option value='Noche'>Noche</option>
                         </select>
                 </div>
-                <button className='bg-transparent text-white mt-2 btn btn-secondary'>Registrarse</button>
+                <button className='bg-transparent text-white mt-2 btn btn-secondary'>Sign Up</button>
             </form>
         </div>
         

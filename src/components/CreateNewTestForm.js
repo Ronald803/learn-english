@@ -30,8 +30,8 @@ export default function CreateNewTestForm(props) {
         let level = [];
         if(checkedBoxes.Básico){level.push("Básico")};
         if(checkedBoxes.Auxiliar){level.push("Auxiliar")};
-        if(checkedBoxes.Medio1){level.push("Medio1")};
-        if(checkedBoxes.Medio2){level.push("Medio2")};
+        if(checkedBoxes.Medio1){level.push("Medio I")};
+        if(checkedBoxes.Medio2){level.push("Medio II")};
         let schedule = [];
         if(checkedBoxes.Mañana){schedule.push("Mañana")};
         if(checkedBoxes.Tarde){schedule.push("Tarde")};

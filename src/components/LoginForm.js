@@ -43,7 +43,7 @@ const LoginForm = () => {
         <div className='bg-transparent text-white border-white card'>
             <form className='bg-transparent text-white card-body' onSubmit={handleSubmit}>
                 <div className='bg-transparent text-white mb-3'>
-                    <label className='bg-transparent text-white form-label' htmlFor='email'>Correo electrónico </label>
+                    <label className='bg-transparent text-white form-label' htmlFor='email'>Email</label>
                     <input
                         type='text'
                         id='email'
@@ -53,7 +53,7 @@ const LoginForm = () => {
                     />
                 </div>
                 <div className='bg-transparent text-white mb-3'>
-                    <label className='bg-transparent text-white form-label' htmlFor='password'>Contraseña </label>
+                    <label className='bg-transparent text-white form-label' htmlFor='password'>Password</label>
                     <input
                         className='bg-transparent text-white form-control'
                         type='password'
